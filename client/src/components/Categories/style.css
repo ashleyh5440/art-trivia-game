@@ -1,0 +1,10 @@
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid red;
+}
+
+.category-buttons Button {
+    margin: 2%;
+}
