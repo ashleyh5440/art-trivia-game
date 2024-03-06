@@ -31,7 +31,6 @@ const userSchema = new Schema ({
         type: Int,
         required: true,
     },
-    savedScores: [scoreSchema],   
 },
     {
         toJSON: {
