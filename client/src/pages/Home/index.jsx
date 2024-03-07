@@ -9,7 +9,7 @@ function Home() {
             <div>
                 <h1>Know It All</h1>
                 <img id="home-pic" src={homePic} />
-                <p>The Trivia Game for Smart-Asses</p>
+                <p>The Trivia Game To End All Trivia Games</p>
             </div>
             <div className="categories">
                 <Categories />
