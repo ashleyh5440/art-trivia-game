@@ -20,3 +20,11 @@ h1 {
 #home-pic {
     width: 30%;
 }
+
+.scores {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid #EC2020;
+}
