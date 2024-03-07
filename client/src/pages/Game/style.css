@@ -1,0 +1,10 @@
+.question-container {
+    padding: 5%;
+    margin-top: 20%;
+    border: 2px solid green;
+}
+
+.options Button {
+    background-color: red;
+    margin: 2%;
+}
