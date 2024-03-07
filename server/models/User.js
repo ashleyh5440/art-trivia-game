@@ -1,5 +1,4 @@
 const {Schema, model} = require('mongoose');
-const scoreSchema = require('./Score');
 
 const userSchema = new Schema ({
     id: {
@@ -31,12 +30,7 @@ const userSchema = new Schema ({
         type: Int,
         required: true,
     },
-},
-    {
-        toJSON: {
-            virtuals: true,
-        },
-    }
+}
 );
 
 const User = model('User', userSchema);
