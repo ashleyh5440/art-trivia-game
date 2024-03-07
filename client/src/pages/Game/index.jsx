@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 // import Auth from ""
@@ -26,15 +26,13 @@ import { useMutation } from '@apollo/client';
 function Game() {
     const {state} = useLocation()
     const {questions, category} = state;
-    console.log(category, questions)
+    console.log(category, questions, state)
 
     //for scoring
-    const stateRef = useRef(0);
-    const navigate = useNavigate();
-    const [addScore, { error }] = useMutation(SAVE_SCORE);
+    // const stateRef = useRef(0);
+    // const navigate = useNavigate();
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [showScore, setShowScore] = useState(false);
 
     const endQuiz = () => {
         console.log("inside of endquiz ", stateRef.current);
@@ -60,28 +58,18 @@ function Game() {
         }
       };
 
-      const handleScoreSubmit = async () => {
-        if (stateRef.current > 0) {
-          const { data } = await addScore({
-            variables: {
-              category: category,
-              score: stateRef.current,
-              userName: Auth.getProfile().data.userName,
-            },
-          });
-          console.log(data);
-        }
-      };
-
+      window.addEventListener("popstate", (e) => {
+        window.location.replace("/");
+      });
 
     return (
         <div className="question-container">
-            {questions.map(question => (
-                <div key={question.question}>
+            {questions.map((question, index) => (
+                <div key={index}>
                     <p className="question">{question.question}</p>
                     <p className="correct-answer">{question.correct_answer}</p>
                     <div className="incorrect-answers">
-                        {question.incorrect_answers.map((answer, index) => (
+                        {question.options.map((answer, index) => (
                         <p key={index}>{answer}</p>
                         ))}
                     </div>
