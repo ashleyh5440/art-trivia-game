@@ -1,0 +1,33 @@
+// schema.graphql
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  highScores: [Int]!
+  favoritePaintings: [String]!
+}
+
+type TriviaQuestion {
+  id: ID!
+  question: String!
+  answer: String!
+  options: [String]!
+  imageURL: String
+}
+
+type Query {
+  getUser(id: ID!): User
+  getAllUsers: [User]!
+  getTriviaQuestion(id: ID!): TriviaQuestion
+  getAllTriviaQuestions: [TriviaQuestion]!
+}
+
+type Mutation {
+  createUser(username: String!, email: String!): User
+  updateUser(id: ID!, username: String, email: String): User
+  deleteUser(id: ID!): User
+  addTriviaQuestion(question: String!, answer: String!, options: [String]!, imageURL: String): TriviaQuestion
+  updateTriviaQuestion(id: ID!, question: String, answer: String, options: [String], imageURL: String): TriviaQuestion
+  deleteTriviaQuestion(id: ID!): TriviaQuestion
+}
