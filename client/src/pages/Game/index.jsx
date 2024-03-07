@@ -1,82 +1,61 @@
 import { useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-// import Auth from ""
 
-
-// let userClick = 
-// let correctAnser = 
-
-// if (userClick === correctAnser) {
-//     // button change color/some animation
-// } else {
-//     // button change color/some animation
-//     //highlights correct answer
-// }
-
-// function displayQuestions() {
-//     //want a timer of 15 sec for each question
-//     //next question appears after user makes choice or timer runs out
-// }
-
-// function displayChoices() {
-//     //how do i make them random?
-// }
+import './style.css'
+import Button from 'react-bootstrap/Button';
 
 function Game() {
     const {state} = useLocation()
     const {questions, category} = state;
     console.log(category, questions, state)
 
-    //for scoring
-    // const stateRef = useRef(0);
-    // const navigate = useNavigate();
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(15);
 
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+    useEffect(() => {
+      if (currentQuestionIndex < questions.length) {
+        const timer = setInterval(() => {
+          setTimeLeft(prevTime => {
+            if (prevTime === 0) {
+              setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+              return 15; 
+            } else {
+              return prevTime - 1;
+            }
+          });
+        }, 1000);
+        return () => clearInterval(timer);
+      }
+    }, [currentQuestionIndex, questions.length]);
 
-    const endQuiz = () => {
-        console.log("inside of endquiz ", stateRef.current);
-    
-        handleScoreSubmit();
-    
-        setTimeout(() => {
-          navigate("/leaderboard");
-        }, 4000);
-      };
+    const handleAnswerOptionClick = (option) => {
+      // implement logic here
+      // Move to the next question after user selects an answer
+      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+      setTimeLeft(15); // Reset time for the next question
+  };
 
-      const handleAnswerOptionClick = (option) => {
-        if (option === questions[currentQuestion].correctAnswer) {
-          stateRef.current++;
-        }
-    
-        const nextQuestion = currentQuestion + 1;
-        if (nextQuestion < questions.length) {
-          setCurrentQuestion(nextQuestion);
-        } else {
-          setShowScore(true);
-          endQuiz();
-        }
-      };
-
-      window.addEventListener("popstate", (e) => {
-        window.location.replace("/");
-      });
-
-    return (
-        <div className="question-container">
-            {questions.map((question, index) => (
-                <div key={index}>
-                    <p className="question">{question.question}</p>
-                    <p className="correct-answer">{question.correct_answer}</p>
-                    <div className="incorrect-answers">
-                        {question.options.map((answer, index) => (
-                        <p key={index}>{answer}</p>
-                        ))}
-                    </div>
-                </div>
-             ))}
-        </div>
-    )
+  if (currentQuestionIndex < questions.length) {
+      const currentQuestion = questions[currentQuestionIndex];
+      return (
+          <div className="question-container">
+              <p className="question">{currentQuestion.question}</p>
+              <p>{timeLeft}</p>
+              <div className="options">
+                  {currentQuestion.options.map((option, index) => (
+                      // <button key={index} onClick={() => handleAnswerOptionClick(option)}>
+                      //     {option}
+                      // </button>
+                      <Button variant="primary" ey={index} onClick={() => handleAnswerOptionClick(option)}>{option}</Button>
+                  ))}
+              </div>
+          </div>
+      );
+  } else {
+      // Display something when all questions are answered
+      return <p>All questions answered.</p>;
+  }
 }
 
 export default Game;
