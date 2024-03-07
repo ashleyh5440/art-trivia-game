@@ -2,6 +2,9 @@ import { useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
+import './style.css'
+import Button from 'react-bootstrap/Button';
+
 function Game() {
     const {state} = useLocation()
     const {questions, category} = state;
@@ -41,9 +44,10 @@ function Game() {
               <p>{timeLeft}</p>
               <div className="options">
                   {currentQuestion.options.map((option, index) => (
-                      <button key={index} onClick={() => handleAnswerOptionClick(option)}>
-                          {option}
-                      </button>
+                      // <button key={index} onClick={() => handleAnswerOptionClick(option)}>
+                      //     {option}
+                      // </button>
+                      <Button variant="primary" ey={index} onClick={() => handleAnswerOptionClick(option)}>{option}</Button>
                   ))}
               </div>
           </div>
