@@ -1,0 +1,34 @@
+.category-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.left, .right {
+    width: 40%;
+    margin: 4%;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-buttons Button {
+    margin: 2%;
+    padding: 4%;
+}
+
+@media screen and (max-width: 768px) {
+    .category-buttons {
+        flex-direction: column;
+    }
+
+    .category-buttons Button {
+        margin: 8%;
+    }
+
+    .left, .right {
+        margin: 0%;
+        width: 60%;
+    }
+}
