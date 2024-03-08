@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { Outlet } from 'react-router-dom';
+import NavBar from './components/Nav'
 
 import {
   ApolloClient,
@@ -13,6 +14,7 @@ function App() {
 
   return (
    <main>
+    <NavBar />
     <Outlet />
    </main>
   )
