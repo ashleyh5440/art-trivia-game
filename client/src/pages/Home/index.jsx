@@ -19,11 +19,6 @@ function Home() {
                 <Categories />
             </div>
 
-
-            <div className="scores">
-                <Scores />
-            </div>
-
         </section>
     );
 };
