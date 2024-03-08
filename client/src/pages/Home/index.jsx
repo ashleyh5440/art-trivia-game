@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Categories from '../../components/Categories';
+import Scores from '../Scores';
 import homePic from '../../assets/nerd.gif';
 import '../Home/style.css'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -17,7 +18,12 @@ function Home() {
             <div className="categories">
                 <Categories />
             </div>
-            
+
+
+            <div className="scores">
+                <Scores />
+            </div>
+
         </section>
     );
 };
