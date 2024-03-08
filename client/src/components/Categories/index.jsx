@@ -63,7 +63,7 @@ function Categories() {
     };
 
     return (
-        <section className="category-buttons">
+        <div className="category-buttons">
           <div className="left">
             <Button variant="primary" onClick={() => handleCategorySelection(25)}>Art</Button> 
             <Button variant="primary" onClick={() => handleCategorySelection(10)}>Books</Button>
@@ -76,7 +76,7 @@ function Categories() {
             <Button variant="primary" onClick={() => handleCategorySelection(21)}>Sports</Button>
             <Button variant="primary" onClick={() => handleCategorySelection(14)}>TV</Button>
           </div>
-        </section>
+        </div>
     )
 };
 

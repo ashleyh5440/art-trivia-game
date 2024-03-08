@@ -1,23 +1,29 @@
 .question-container {
     padding: 5%;
-    margin-top: 20%;
+    margin-top: 5%;
+    background-image: url(../../assets/game-background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .question {
     font-size: 30px;
+    color: white;
 }
 
 .timer {
     font-size: 40px;
-    margin-bottom: 15%;
+    margin-bottom: 5%;
+    color: white;
 }
 
 .options {
-    margin: 9%;
+    margin: 7%;
 }
 
 .options Button {
-    background-color: rgb(166, 0, 217);
+    background-color: rgb(0, 0, 160);
+    color: white;
     padding: 2%;
     border: none;
     border-radius: 10%;
