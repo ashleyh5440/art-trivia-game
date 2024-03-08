@@ -1,10 +1,53 @@
 .question-container {
     padding: 5%;
-    margin-top: 20%;
-    border: 2px solid green;
+    margin-top: 5%;
+    background-image: url(../../assets/game-background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.question {
+    font-size: 30px;
+    color: white;
+}
+
+.timer {
+    font-size: 40px;
+    margin-bottom: 5%;
+    color: white;
+}
+
+.options {
+    margin: 7%;
 }
 
 .options Button {
-    background-color: #F5B338;
+    background-color: rgb(0, 0, 160);
+    color: white;
+    padding: 2%;
+    border: none;
+    border-radius: 10%;
     margin: 2%;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 200%;
+}
+
+@media screen and (max-width: 768px) {
+    .question {
+        font-size: 22px;
+    }
+    
+    .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20%;
+    }
+
+    .options Button {
+        width: 80%;
+        margin: 7%;
+        font-size: 150%;
+    }
+
 }

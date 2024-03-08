@@ -14,17 +14,27 @@
 }
 
 .category-buttons Button {
+    border: none;
     margin: 2%;
-    padding: 4%;
+    padding: 2%;
+    background-color: rgb(249, 11, 178);
+    font-size: 150%;
+    font-family: "Shadows Into Light", cursive;
+    color: white;
+}
+
+.category-buttons Button:hover {
+    background-color: rgb(187, 4, 132);
 }
 
 @media screen and (max-width: 768px) {
     .category-buttons {
         flex-direction: column;
+        align-items: center;
     }
 
     .category-buttons Button {
-        margin: 8%;
+        margin: 4%;
     }
 
     .left, .right {
