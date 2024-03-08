@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import homePic from '../../assets/homePic.jpg';
-import '../Home/style.css'
 
-function Home() {
+function Scores() {
     return (
         <>
        
@@ -76,3 +75,5 @@ function Home() {
         </>
     );
 };
+
+export default Scores;

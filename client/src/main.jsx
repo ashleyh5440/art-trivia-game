@@ -5,8 +5,8 @@ import App from './App.jsx'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.css';
 
-import Game from './pages/Game'
-// import Scores from './pages/Scores'
+import Game from './pages/Game';
+import Scores from './pages/Scores';
 import Home from './pages/Home';
 
 const router = createBrowserRouter([
@@ -23,10 +23,10 @@ const router = createBrowserRouter([
         path: '/game',
         element: <Game />,
       },
-      // {
-      //   path: '/scores',
-      //   element: <Scores />,
-      // },
+      {
+        path: '/scores',
+        element: <Scores />,
+      },
     ],
   },
 ]);
