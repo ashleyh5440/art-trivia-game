@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import homePic from '../../assets/homePic.jpg';
+import './style.css'
 
 function Scores() {
     return (
@@ -11,61 +12,61 @@ function Scores() {
                 <img id="home-pic" src={homePic} />
             </div>
             
-            <table> 
+            <table id = "table-container"> 
         <tr>
-            <th>Name</th>
-            <th>Score</th>
+            <th id = "name-header">Name</th>
+            <th id = "score-header">Score</th>
         </tr>
    {/* THE NAMES AND SCORES ARE TEMPORARY AND WILL BE REPLACED WITH ACTUAL USER NAMES... SOON.
        WHOEVER IS IN CHARGE OF THE USERNAMES, MAKE IT SO. */}   
         <tr>
-            <td>Monkey D. Luffy</td>
-            <td>1</td>
+            <td id = "name">Monkey D. Luffy</td>
+            <td id = "score">1</td>
         </tr>
 
         <tr>
-            <td>Roronoa Zoro</td>
-            <td>3</td>
+            <td id = "name">Roronoa Zoro</td>
+            <td id = "score">3</td>
         </tr>
 
         <tr>
-            <td>Nami</td>
-            <td>43</td>
+            <td id = "name">Nami</td>
+            <td id = "score">43</td>
         </tr>
 
         <tr>
-            <td>Usopp</td>
-            <td>18</td>
+            <td id = "name">Usopp</td>
+            <td id = "score">18</td>
         </tr>
 
         <tr>
-            <td>Black-Leg Sanji</td>
-            <td>18</td>
+            <td id = "name">Black-Leg Sanji</td>
+            <td id = "score">18</td>
         </tr>
 
         <tr>
-            <td>Tony Tony Chopper</td>
-            <td>91</td>
+            <td id = "name">Tony Tony Chopper</td>
+            <td id = "score">91</td>
         </tr>
 
         <tr>
-            <td>Nico Robin</td>
-            <td>130</td>
+            <td id = "name">Nico Robin</td>
+            <td id = "score">130</td>
         </tr>
 
         <tr>
-            <td>Franky</td>
-            <td>322</td>
+            <td id = "name">Franky</td>
+            <td id = "score">322</td>
         </tr>
 
         <tr>
-            <td>Brook</td>
-            <td>381</td>
+            <td id = "name">Brook</td>
+            <td id = "score">381</td>
         </tr>
 
         <tr>
-            <td>Jimbei</td>
-            <td>876</td>
+            <td id = "name">Jimbei</td>
+            <td id = "score">876</td>
         </tr>
 
             </table>

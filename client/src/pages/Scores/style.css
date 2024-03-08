@@ -1,0 +1,44 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../../assets/scores-background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+h1 {
+    font-family: "Shadows Into Light", cursive;
+    font-size: 65px;
+    color: #E5296B;
+}
+
+#home-pic {
+    width: 20%;
+}
+
+#name-header {
+    font-family: Arial, serif;
+    font-size: medium;
+    color: #FB4241;
+}
+
+#score-header {
+    font-family: Arial, serif;
+    font-size: medium;
+    color: #FB4241;
+}
+
+#name {
+    font-family: Arial, serif;
+    font-size: medium;
+    color: #00AB4E;
+}
+
+#score {
+    font-family: Arial, serif;
+    font-size: medium;
+    color: #00AB4E;
+}
+
