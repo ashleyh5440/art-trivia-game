@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Game from './pages/Game';
 import Scores from './pages/Scores';
 import Home from './pages/Home';
+import LogIn from './pages/LogIn'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/scores',
         element: <Scores />,
+      },
+      {
+        path: '/login',
+        element: <LogIn />,
       },
     ],
   },

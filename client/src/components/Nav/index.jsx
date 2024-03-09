@@ -1,25 +1,26 @@
 import { useState } from 'react';
-import Scores from '../../pages/Scores'
+import './style.css';
+import 'animate.css';
 
-import Container from 'react-bootstrap/Container';
+import { NavLink } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavBar() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Home</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Log in</Nav.Link>
-            <Nav.Link href="#link">Scores</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <Nav
+    activeKey="/home"
+    onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+  >
+    <Nav.Item>
+      <NavLink to="/">Home</NavLink>
+    </Nav.Item>
+    <Nav.Item>
+      <NavLink to="/login">Log in</NavLink>
+    </Nav.Item>
+    <Nav.Item>
+      <NavLink to="/scores">Scores</NavLink>
+    </Nav.Item>
+  </Nav>
   );
 }
 
