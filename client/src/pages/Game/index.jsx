@@ -75,7 +75,7 @@ function Game() {
   } else {
       // Display something when all questions are answered
       return (
-      <div className="question-container" >
+      <div className="question-container">
         <p>You scored {score}</p>
       </div>);
   }

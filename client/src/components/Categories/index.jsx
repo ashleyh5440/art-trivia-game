@@ -63,18 +63,18 @@ function Categories() {
     };
 
     return (
-        <div className="category-buttons">
+        <div className="category-buttons animate__animated animate__pulse animate__infinite	infinite animate__slower	3s">
           <div className="left">
-            <Button variant="primary" onClick={() => handleCategorySelection(25)}>Art</Button> 
-            <Button variant="primary" onClick={() => handleCategorySelection(10)}>Books</Button>
-            <Button variant="primary" onClick={() => handleCategorySelection(18)}>Computers</Button>
-            <Button variant="primary" onClick={() => handleCategorySelection(11)}>Film</Button>
+            <Button variant="primary" onClick={() => handleCategorySelection(25, "Art")}>Art</Button> 
+            <Button variant="primary" onClick={() => handleCategorySelection(10, "Books")}>Books</Button>
+            <Button variant="primary" onClick={() => handleCategorySelection(18, "Computers")}>Computers</Button>
+            <Button variant="primary" onClick={() => handleCategorySelection(11, "Film")}>Film</Button>
           </div>
           <div className="right">
-            <Button variant="primary" onClick={() => handleCategorySelection(23)}>History</Button>
-            <Button variant="primary" onClick={() => handleCategorySelection(17)}>Science & Naure</Button>
-            <Button variant="primary" onClick={() => handleCategorySelection(21)}>Sports</Button>
-            <Button variant="primary" onClick={() => handleCategorySelection(14)}>TV</Button>
+            <Button variant="primary" onClick={() => handleCategorySelection(23, "History")}>History</Button>
+            <Button variant="primary" onClick={() => handleCategorySelection(17, "Science & Nature")}>Science & Naure</Button>
+            <Button variant="primary" onClick={() => handleCategorySelection(21, "Sports")}>Sports</Button>
+            <Button variant="primary" onClick={() => handleCategorySelection(14, "TV")}>TV</Button>
           </div>
         </div>
     )

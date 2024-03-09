@@ -1,0 +1,30 @@
+h2 {
+    font-family: "Shadows Into Light", cursive;
+    color: white;
+}
+
+.container {
+    width: 70%;
+    margin-right: 1%;
+    border: 2px solid blue;
+}
+
+.left {
+    border: 2px solid red;
+}
+
+.right {
+    border: 2px solid green;
+}
+
+.form-label {
+    color: white;
+}
+
+.form-control {
+    background-color: rgba(0, 0, 0, 0.348);
+}
+
+.form-control::placeholder {
+    color: white;
+}
