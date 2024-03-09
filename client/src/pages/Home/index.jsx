@@ -11,7 +11,7 @@ function Home() {
             <div>
                 <h1 className="animate__animated animate__slideInDown"><strong>Know It All</strong></h1>
                 <img id="home-pic" src={homePic} />
-                <p>The Equivalent Of "Are You Smarter Than A 5th Grader?"</p>
+                <p>Trivia Game</p>
             </div>
             <div className="categories">
                 <Categories />

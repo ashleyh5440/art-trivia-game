@@ -11,11 +11,11 @@ section {
 h1 {
     font-family: "Shadows Into Light", cursive;
     font-size: 65px;
-    color: #EC2020;
+    color: white;
 }
 
 p {
-    color: aquamarine;
+    color: white;
 }
 
 .categories {

@@ -13,7 +13,7 @@ function Categories() {
     const handleCategorySelection = async (categoryId) => {
         try {
             setSelectedCategory(categoryId);
-            const response = await axios.get(`https://opentdb.com/api.php?amount=30&category=${categoryId}&encode=base64`);
+            const response = await axios.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}&encode=base64`);
 
             const trimData = response.data.results.map((item) => {
                 // decode the question
