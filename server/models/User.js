@@ -2,10 +2,6 @@ const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema ({
-    id: {
-        type: Int,
-        required: true,
-    },
     username: {
         type: String,
         required: true,
@@ -23,6 +19,7 @@ const userSchema = new Schema ({
         required: true,
         minlength: 5,
     },
+    
 // should category and score value by tied to scores? no user model?
 //     category: {
 //         type: String,

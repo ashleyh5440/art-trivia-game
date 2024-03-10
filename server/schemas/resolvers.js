@@ -14,6 +14,26 @@ const resolvers = {
     getAllTriviaQuestions: async () => {
       return await TriviaQuestion.find();
     },
+     // Retrieve scores for a specific user
+    getUserScores: async (_, { userId }) => {
+      try {
+        const scores = await Score.find({ user: userId }).populate('user');
+        return scores;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Error fetching user scores');
+      }
+    },
+     // Retrieve scores for a specific category
+    getCategoryScores: async (_, { category }) => {
+      try {
+        const scores = await Score.find({ category }).populate('user');
+        return scores;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Error fetching category scores');
+      }
+    },
   },
   Mutation: {
     createUser: async (_, { username, email }) => {
@@ -36,3 +56,5 @@ const resolvers = {
     },
   },
 };
+
+module.exports = resolvers;

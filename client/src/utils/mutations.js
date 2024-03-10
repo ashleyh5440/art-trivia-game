@@ -7,6 +7,7 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
+        email
       }
     }
   }
@@ -19,38 +20,40 @@ export const ADD_USER = gql`
       user {
         _id
         username
+        email
       }
     }
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+export const UPDATE_USER = gql`
+  mutation updateUser($username: String, $email: String, $password: String) {
+    updateUser(username: $username, email: $email, password: $password) {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
+      username
+      email
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
+export const DELETE_USER = gql`
+  mutation deleteUser {
+    deleteUser {
       _id
-      thoughtText
-      thoughtAuthor
+      username
+      email
+    }
+  }
+`;
+
+export const ADD_SCORE = gql`
+  mutation addScore($userId: ID, $category: String!, $score_value: Int!) {
+    addScore(userId: $userId, category: $category, score_value: $score_value) {
+      _id
+      username
+      category
+      score_value
       createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
     }
   }
 `;
