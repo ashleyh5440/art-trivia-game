@@ -35,7 +35,7 @@ function SignUp() {
                             <Form.Control type="password" placeholder="password" />
                         </Col>
                     </Form.Group>
-                    <Button variant="primary">Sign up</Button>
+                    <Button variant="primary" className="button">Sign up</Button>
                 </Form>
             </div>
         </Container>

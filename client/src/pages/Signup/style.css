@@ -34,3 +34,8 @@ h2, h3 {
 .form-control::placeholder {
     color: white;
 }
+
+.button:hover {
+    animation: heartBeat;
+  animation-duration: 2s;
+}
