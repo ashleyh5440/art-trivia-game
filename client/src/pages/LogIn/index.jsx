@@ -13,8 +13,7 @@ import { NavLink } from 'react-router-dom';
 function LogIn() {
     return (
         <Container className="container">
-        <Row>
-          <Col className="column">
+          <div className="column">
             <div>
                 <h2>Log in to play!</h2>
             </div>
@@ -32,15 +31,14 @@ function LogIn() {
                             <Form.Control type="password" placeholder="password" />
                         </Col>
                     </Form.Group>
-                    <Button variant="primary">Log in</Button>
+                    <Button variant="primary" className="button">Log in</Button>
                 </Form>
             </div>
             <div className="sign-up-container">
                 <h3>New here? Sign up!</h3>
-                <Button variant="primary"><NavLink to="/signup">Sign up</NavLink></Button>
+                <Button variant="primary" className="button"><NavLink to="/signup">Sign up</NavLink></Button>
             </div>
-          </Col>
-        </Row>
+          </div>
       </Container>
     );
 };
