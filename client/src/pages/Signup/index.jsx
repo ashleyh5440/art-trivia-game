@@ -2,28 +2,31 @@ import { useState } from 'react';
 import './style.css';
 import 'animate.css';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-
-function LogIn() {
+function SignUp() {
     return (
         <Container className="container">
-        <Row>
-          <Col className="column">
             <div>
-                <h2>Log in to play!</h2>
+                <h2>Sign up!</h2>
             </div>
-            <div className='form'>
+            <div className="column">
                 <Form>
+                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                        <Form.Label column sm="2">Username</Form.Label>
+                        <Col sm="10">
+                            <Form.Control type="user" placeholder="name" />
+                        </Col>
+                    </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                         <Form.Label column sm="2">Email</Form.Label>
                         <Col sm="10">
-                        <Form.Control type="email" placeholder="name@email.com" />
+                            <Form.Control type="email" placeholder="name@email.com" />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -32,17 +35,11 @@ function LogIn() {
                             <Form.Control type="password" placeholder="password" />
                         </Col>
                     </Form.Group>
-                    <Button variant="primary">Log in</Button>
+                    <Button variant="primary">Sign up</Button>
                 </Form>
             </div>
-            <div className="sign-up-container">
-                <h3>New here? Sign up!</h3>
-                <Button variant="primary"><NavLink to="/signup">Sign up</NavLink></Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+        </Container>
     );
 };
 
-export default LogIn;
+export default SignUp;
