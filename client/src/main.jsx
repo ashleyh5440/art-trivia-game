@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Game from './pages/Game';
 import Scores from './pages/Scores';
 import Home from './pages/Home';
-import LogIn from './pages/LogIn'
+import LogIn from './pages/LogIn';
+import SignUp from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <LogIn />,
+      },
+      {
+        path: '/signup',
+        element: <SignUp />,
       },
     ],
   },
