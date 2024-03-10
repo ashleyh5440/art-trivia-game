@@ -1,4 +1,4 @@
-const Score = require('./Score');
 const User = require('./User');
+const Score = require('./Score');
 
-module.exports = {Score, User};
+module.exports = {User, Score};

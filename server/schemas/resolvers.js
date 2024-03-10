@@ -1,4 +1,5 @@
-const { User, Score } = require('./models');
+const { User, Score } = require('../models');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -8,12 +9,12 @@ const resolvers = {
     getAllUsers: async () => {
       return await User.find();
     },
-    getTriviaQuestion: async (_, { id }) => {
-      return await TriviaQuestion.findById(id);
-    },
-    getAllTriviaQuestions: async () => {
-      return await TriviaQuestion.find();
-    },
+    // getTriviaQuestion: async (_, { id }) => {
+    //   return await TriviaQuestion.findById(id);
+    // },
+    // getAllTriviaQuestions: async () => {
+    //   return await TriviaQuestion.find();
+    // },
      // Retrieve scores for a specific user
     getUserScores: async (_, { userId }) => {
       try {
@@ -36,24 +37,44 @@ const resolvers = {
     },
   },
   Mutation: {
-    createUser: async (_, { username, email }) => {
-      return await User.create({ username, email });
+    addUser: async (_, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
     },
-    updateUser: async (_, { id, username, email }) => {
-      return await User.findByIdAndUpdate(id, { username, email }, { new: true });
+    login: async (_, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+      const correctPw = await user.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+      const token = signToken(user);
+      return { token, user };
+    },
+        // createUser: async (_, { username, email }) => {
+    //   return await User.create({ username, email });
+    // },
+    updateUser: async (_, { id, username, email, password }) => {
+      return await User.findByIdAndUpdate(id, { username, email, password }, { new: true });
     },
     deleteUser: async (_, { id }) => {
       return await User.findByIdAndDelete(id);
     },
-    addTriviaQuestion: async (_, { question, answer, options, imageURL }) => {
-      return await TriviaQuestion.create({ question, answer, options, imageURL });
+    addScore: async (_, { userId, category, score_value }) => {
+      return await Score.create({ user: userId, category, score_value });
     },
-    updateTriviaQuestion: async (_, { id, question, answer, options, imageURL }) => {
-      return await TriviaQuestion.findByIdAndUpdate(id, { question, answer, options, imageURL }, { new: true });
-    },
-    deleteTriviaQuestion: async (_, { id }) => {
-      return await TriviaQuestion.findByIdAndDelete(id);
-    },
+    // addTriviaQuestion: async (_, { question, answer, options, imageURL }) => {
+    //   return await TriviaQuestion.create({ question, answer, options, imageURL });
+    // },
+    // updateTriviaQuestion: async (_, { id, question, answer, options, imageURL }) => {
+    //   return await TriviaQuestion.findByIdAndUpdate(id, { question, answer, options, imageURL }, { new: true });
+    // },
+    // deleteTriviaQuestion: async (_, { id }) => {
+    //   return await TriviaQuestion.findByIdAndDelete(id);
+    // },
   },
 };
 
