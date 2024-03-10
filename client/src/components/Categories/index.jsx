@@ -72,7 +72,7 @@ function Categories() {
           </div>
           <div className="right">
             <Button variant="primary" onClick={() => handleCategorySelection(23, "History")}>History</Button>
-            <Button variant="primary" onClick={() => handleCategorySelection(17, "Science & Nature")}>Science & Naure</Button>
+            <Button variant="primary" onClick={() => handleCategorySelection(17, "Science & Nature")}>Science & Nature</Button>
             <Button variant="primary" onClick={() => handleCategorySelection(21, "Sports")}>Sports</Button>
             <Button variant="primary" onClick={() => handleCategorySelection(14, "TV")}>TV</Button>
           </div>

@@ -24,17 +24,32 @@ const userSchema = new Schema ({
         minlength: 5,
     },
 // should category and score value by tied to scores? no user model?
-    category: {
-        type: String,
-        required: true,
-    },
-// should category and score value by tied to scores? no user model?
-    score_value: {
-        type: Int,
-        required: true,
-    },
+//     category: {
+//         type: String,
+//         required: true,
+//     },
+// // should category and score value by tied to scores? no user model?
+//     score_value: {
+//         type: Int,
+//         required: true,
+//     },
 }
 );
+
+userSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+      const saltRounds = 10;
+      this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+  
+    next();
+  });
+
+  userSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+  };
+
+
 
 const User = model('User', userSchema);
 

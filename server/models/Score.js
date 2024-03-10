@@ -1,18 +1,27 @@
 const {Schema, model} = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const scoreSchema = new Schema ({
-    Category: {
+    category: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        enum: ['Art', 'Books', 'Computers', 'Film', 'History', 'Science & Nature', 'Sports', 'TV'],
     },
-    user_id: {
-        type: Int,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
     },
     score: {
-        type: Int,
+        type: Number,
         required: true,
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+    },
 });
 
 const Score = model('Score', scoreSchema);
