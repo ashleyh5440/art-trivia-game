@@ -2,9 +2,9 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(../../assets/scores-background.jpg);
+    background-image: url(../../assets/home-background.jpg);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 400% 400%;
     background-position: center;
 }
 
@@ -12,10 +12,6 @@ h1 {
     font-family: "Shadows Into Light", cursive;
     font-size: 65px;
     color: #E5296B;
-}
-
-#home-pic {
-    width: 20%;
 }
 
 #name-header {
