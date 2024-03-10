@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
 import {useSortBy, useTable} from 'react-table';
 import './style.css'
+
 
 function Scores() {
     //instead of using this hardcoded data, have a function to retrieve data from database
