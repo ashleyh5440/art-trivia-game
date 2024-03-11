@@ -59,15 +59,13 @@ function Scores() {
     useSortBy)
 
     return (
-        <>
-       <section>
-       <div>
-            <h1>HIGH SCORES</h1>
-        </div>
-
-        <div>
-            <table {...getTableProps()} style={{border: 'solid 1px yellow'}}>
-                <thead>
+       <div className="scores-container">
+            <div>
+                <h1>High Scores</h1>
+            </div>
+            <div className="table">
+                <table {...getTableProps()} style={{border: 'solid 1px yellow'}}>
+                    <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
@@ -76,51 +74,45 @@ function Scores() {
                                     style={{
                                         borderBottom: 'solid 3px red',
                                         color: 'aquamarine'
-                                    }}
-                                >
+                                    }}>
                                     {column.render('Header')}
-                                    <span>
-                                        {column.isSorted
-                                            ? column.isSortedDesc
-                                                ? '🔽'
-                                                : '🔼'
-                                            : ''}
+                                        <span>
+                                            {column.isSorted
+                                                ? column.isSortedDesc
+                                                    ? '🔽'
+                                                    : '🔼'
+                                                : ''}
                                         </span>
                                 </th>
                             ))}
                         </tr>
                     ))}
-                </thead>
-                <tbody {...getTableBodyProps()}>
-                    {rows.map(row => {
-                        prepareRow(row)
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {row.cells.map(cell => {
-                                    return (
-                                        <td 
-                                        {...cell.getCellProps()}
-                                        style={{
-                                            padding: '1px',
-                                            border: 'solid 1px green',
-                                            color: 'white'
-                                        }}
-                                        >
-                                            {cell.render('Cell')}
-                                        </td>
+                    </thead>
+                    <tbody {...getTableBodyProps()}>
+                        {rows.map(row => {
+                            prepareRow(row)
+                            return (
+                                <tr {...row.getRowProps()}>
+                                    {row.cells.map(cell => {
+                                        return (
+                                            <td 
+                                            {...cell.getCellProps()}
+                                            style={{
+                                                padding: '1px',
+                                                border: 'solid 1px green',
+                                                color: 'white'
+                                            }}>
+                                                {cell.render('Cell')}
+                                            </td>
                                     )
                                 })}
                             </tr>
                         )
                     })}
-                </tbody>
-
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </section>
-
-      
-        </>
     );
 };
 
