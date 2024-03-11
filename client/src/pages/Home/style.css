@@ -1,3 +1,7 @@
+section {
+    background-image: none;
+}
+
 .home-page {
     display: flex;
     flex-direction: column;
