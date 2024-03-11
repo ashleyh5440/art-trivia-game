@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Categories from '../../components/Categories';
 import homePic from '../../assets/nerd.gif';
 import '../Home/style.css'
