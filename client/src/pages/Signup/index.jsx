@@ -8,6 +8,42 @@ import { NavLink } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Auth from '../../utils/auth';
+import{useMutation} from '@apollo/client';
+
+import { ADD_USER } from '../../utils/mutations';
+
+const Signup = () => {
+    const [formState, SetFormState] = useState({
+        username: '',
+        email: '',
+        password: '',
+    });
+    const [addUser, {error, data}] = useMutation(ADD_USER);
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+
+        SetFormState({
+            ...formState,
+            [name]: value,
+        });
+    };
+
+    const handleFormSubmit = async(event) => {
+        event.preventDefault();
+        console.log(formState);
+
+        try {
+            const {data} = await addUser({
+                variables: {...formState},
+            });
+            Auth.login(data.addUser.token);
+        } catch(error) {
+            console.error(e);
+        }
+    };
+}
 
 function SignUp() {
     return (
@@ -35,7 +71,7 @@ function SignUp() {
                             <Form.Control type="password" placeholder="password" />
                         </Col>
                     </Form.Group>
-                    <Button variant="primary" className="button">Sign up</Button>
+                    <Button variant="primary" className="button"><NavLink to="/">Sign up</NavLink></Button>
                 </Form>
             </div>
         </Container>
