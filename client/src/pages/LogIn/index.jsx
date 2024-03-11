@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import 'animate.css';
 
@@ -9,6 +9,45 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
 
+import Auth from '../../utils/auth';
+import{useMutation} from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+
+const Login = (props) => {
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login, { error, data }] = useMutation(LOGIN_USER);
+  
+    // update state based on form input changes
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+  
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    };
+  
+    // submit form
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
+      console.log(formState);
+      try {
+        const { data } = await login({
+          variables: { ...formState },
+        });
+  
+        Auth.login(data.login.token);
+      } catch (e) {
+        console.error(e);
+      }
+  
+      // clear form values
+      setFormState({
+        email: '',
+        password: '',
+      });
+    };
+}  
 
 function LogIn() {
     return (
@@ -31,7 +70,7 @@ function LogIn() {
                             <Form.Control type="password" placeholder="password" />
                         </Col>
                     </Form.Group>
-                    <Button variant="primary" className="button">Log in</Button>
+                    <Button variant="primary" className="button"><NavLink to="/">Log in</NavLink></Button>
                 </Form>
             </div>
             <div className="sign-up-container">
