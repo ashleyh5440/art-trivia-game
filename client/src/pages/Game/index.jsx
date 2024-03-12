@@ -5,11 +5,16 @@ import { useMutation } from '@apollo/client';
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
+import correctSound from '../../assets/correct.mp3';
+import wrongSound from '../../assets/wrong.mp3';
+import winSound from '../../assets/win.mp3';
+import loseSound from '../../assets/lose.mp3';
+import useSound from 'use-sound';
 
 function Game() {
     const {state} = useLocation()
     const {questions, category} = state;
-    const [score, setScore] = useState(0);
+    let [score, setScore] = useState(0);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     // const [timeLeft, setTimeLeft] = useState(15);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -17,6 +22,11 @@ function Game() {
     const [buttonColor, setButtonColor] = useState('primary');
     // let timer; //needs to be a state variable
     let canClick = true;
+
+    const [playCorrectSound] = useSound(correctSound);
+    const [playWrongSound] = useSound(wrongSound);
+    const [playWinSound] = useSound(winSound);
+    const [playLoseSound] = useSound(loseSound);
  
     // useEffect(() => {
     //   if (currentQuestionIndex < questions.length) {
@@ -40,11 +50,13 @@ function Game() {
       setSelectedAnswer(option);
       setCorrectAnswer(isCorrect);
       if (isCorrect && canClick) {
-        setButtonColor('success')
+        setButtonColor('success');
         setScore(prevScore => prevScore + 1);
+        playCorrectSound();
       } else {
         // update button color via state
-        setButtonColor('danger')
+        setButtonColor('danger');
+        playWrongSound();
       }
       canClick = false;
       // clearInterval(timer);
@@ -73,11 +85,25 @@ function Game() {
           </div>
       );
   } else {
-      // Display something when all questions are answered
-      return (
-      <div className="question-container">
-        <p>You scored {score}</p>
-      </div>);
+      // score screen
+        if (score <= 5) {
+          console.log({score});
+          return (
+            <div className="score-container">
+              <p>You scored {score}</p>
+              {playLoseSound()}
+              <div style={{marginBottom: "47%"}}></div>
+            </div>
+          );
+        } else {
+          return (
+            <div className="score-container">
+              <p>You scored {score}!</p>
+              {playWinSound()}
+              <div style={{marginBottom: "47%"}}></div>
+            </div>
+          );
+        }
   }
 }
 
