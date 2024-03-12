@@ -60,7 +60,6 @@ function Game() {
           canClick = true;
         }, 3000);
   };
-
   if (currentQuestionIndex < questions.length) {
       const currentQuestion = questions[currentQuestionIndex];
       return (
