@@ -53,7 +53,7 @@ function SignUp() {
             </div>
             <div className="column">
                 <Form>
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextUser">
                         <Form.Label column sm="2">Username</Form.Label>
                         <Col sm="10">
                             <Form.Control type="user" placeholder="name" />
