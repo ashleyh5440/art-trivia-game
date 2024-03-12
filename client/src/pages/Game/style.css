@@ -7,7 +7,6 @@
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.197); 
     opacity: 1;
-    border: 2px solid red;
 }
 
 .question {
@@ -29,7 +28,6 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    border: 2px solid green;
 }
 
 .options Button {
