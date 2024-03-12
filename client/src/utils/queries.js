@@ -6,6 +6,7 @@ query user($username: String!) {
       _id
       username
       email
+
     }
   }
 `;
@@ -16,7 +17,7 @@ export const QUERY_SCORES = gql`
       _id
       username
       category
-      score_value
+      score
       createdAt
     }
   }
@@ -26,9 +27,9 @@ export const QUERY_CATEGORY_SCORES = gql`
   query getCategoryScores($category: String!) {
     getCategoryScores(category: $category) {
       _id
-      username
+      user
       category
-      score_value
+      score
       createdAt
     }
   }

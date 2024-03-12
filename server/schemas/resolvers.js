@@ -16,9 +16,9 @@ const resolvers = {
     //   return await TriviaQuestion.find();
     // },
      // Retrieve scores for a specific user
-    getUserScores: async (_, { userId }) => {
+    getUserScores: async (parent, args, context) => {
       try {
-        const scores = await Score.find({ user: userId }).populate('user');
+        const scores = await Score.find({ user: context.user._id }).populate('user');
         return scores;
       } catch (error) {
         console.error(error);
@@ -26,9 +26,9 @@ const resolvers = {
       }
     },
      // Retrieve scores for a specific category
-    getCategoryScores: async (_, { category }) => {
+    getCategoryScores: async (_, { category }, context) => {
       try {
-        const scores = await Score.find({ category }).populate('user');
+        const scores = await Score.find({ category, user: context.user._id }).populate('user');
         return scores;
       } catch (error) {
         console.error(error);
@@ -64,14 +64,14 @@ const resolvers = {
         // createUser: async (_, { username, email }) => {
     //   return await User.create({ username, email });
     // },
-    updateUser: async (_, { id, username, email, password }) => {
-      return await User.findByIdAndUpdate(id, { username, email, password }, { new: true });
+    updateUser: async (_, { username, email, password }, context) => {
+      return await User.findByIdAndUpdate(context.user._id, { username, email, password }, { new: true });
     },
-    deleteUser: async (_, { id }) => {
-      return await User.findByIdAndDelete(id);
+    deleteUser: async (_, {  }, context) => {
+      return await User.findByIdAndDelete(context.user._id);
     },
-    addScore: async (_, { userId, category, score_value }) => {
-      return await Score.create({ user: userId, category, score_value });
+    addScore: async (_, { category, score_value }, context) => {
+      return await Score.create({ user: context.user._id, category, score_value });
     },
     // addTriviaQuestion: async (_, { question, answer, options, imageURL }) => {
     //   return await TriviaQuestion.create({ question, answer, options, imageURL });
