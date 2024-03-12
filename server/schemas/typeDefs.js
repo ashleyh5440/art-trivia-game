@@ -3,14 +3,14 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-    password: String
+    scores: [Score]
   }
 
   type Score {
     _id: ID
     user: User
     category: String
-    score_value: Int
+    score: Int
     createdAt: String
   }
 
