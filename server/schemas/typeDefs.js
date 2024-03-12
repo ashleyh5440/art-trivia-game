@@ -22,7 +22,7 @@ const typeDefs = `
   type Query {
     getUser(id: ID!): User
     getAllUsers: [User]
-    getUserScores(userId: ID!): [Score]
+    getUserScores: [Score]
     getCategoryScores(category: String!): [Score]
     me: User
   }
@@ -30,9 +30,9 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    updateUser(id: ID!, username: String, email: String, password: String): User
-    deleteUser(id: ID!): User
-    addScore(userId: ID!, category: String!, score_value: Int!): Score
+    updateUser(username: String, email: String, password: String): User
+    deleteUser: User
+    addScore(category: String!, score_value: Int!): Score
   }
 `;
 
