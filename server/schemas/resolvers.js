@@ -35,6 +35,13 @@ const resolvers = {
         throw new Error('Error fetching category scores');
       }
     },
+    me: async (parent, args, context) => {
+      console.log(context);
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('scores')
+      }
+      throw AuthenticationError;
+    },
   },
   Mutation: {
     addUser: async (_, { username, email, password }) => {
