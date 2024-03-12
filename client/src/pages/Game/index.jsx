@@ -14,7 +14,7 @@ import useSound from 'use-sound';
 function Game() {
     const {state} = useLocation()
     const {questions, category} = state;
-    const [score, setScore] = useState(0);
+    let [score, setScore] = useState(0);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     // const [timeLeft, setTimeLeft] = useState(15);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -25,6 +25,8 @@ function Game() {
 
     const [playCorrectSound] = useSound(correctSound);
     const [playWrongSound] = useSound(wrongSound);
+    const [playWinSound] = useSound(winSound);
+    const [playLoseSound] = useSound(loseSound);
  
     // useEffect(() => {
     //   if (currentQuestionIndex < questions.length) {
@@ -84,11 +86,24 @@ function Game() {
       );
   } else {
       // score screen
-      return (
-      <div className="score-container">
-        <p>You scored {score}!</p>
-        <div style={{marginBottom: "47%"}}></div>
-      </div>);
+        if (score <= 5) {
+          console.log({score});
+          return (
+            <div className="score-container">
+              <p>You scored {score}</p>
+              {playLoseSound()}
+              <div style={{marginBottom: "47%"}}></div>
+            </div>
+          );
+        } else {
+          return (
+            <div className="score-container">
+              <p>You scored {score}!</p>
+              {playWinSound()}
+              <div style={{marginBottom: "47%"}}></div>
+            </div>
+          );
+        }
   }
 }
 
