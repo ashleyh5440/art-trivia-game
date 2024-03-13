@@ -35,9 +35,9 @@ const resolvers = {
       }
     },
      // Retrieve scores for a specific category
-    getCategoryScores: async (_, { category }, context) => {
+    getCategoryScores: async (_, { category }) => {
       try {
-        const scores = await Score.find({ category, user: context.user._id }).populate('user');
+        const scores = await Score.find({ category }).populate('user');
         return scores;
       } catch (error) {
         console.error(error);

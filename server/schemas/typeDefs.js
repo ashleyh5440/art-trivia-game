@@ -21,7 +21,7 @@ const typeDefs = `
   type Query {
     getUser(id: ID!): User
     getAllUsers: [User]
-    getUserScores: [Score]
+    getUserScores(userId: ID!): [Score]
     getCategoryScores(category: String!): [Score]
     me: User
   }

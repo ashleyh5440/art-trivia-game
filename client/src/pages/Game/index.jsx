@@ -5,11 +5,6 @@ import { useMutation } from '@apollo/client';
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
-import correctSound from '../../assets/correct.mp3';
-import wrongSound from '../../assets/wrong.mp3';
-import winSound from '../../assets/win.mp3';
-import loseSound from '../../assets/lose.mp3';
-import useSound from 'use-sound';
 
 function Game() {
     const {state} = useLocation()
@@ -22,11 +17,6 @@ function Game() {
     const [buttonColor, setButtonColor] = useState('primary');
     // let timer; //needs to be a state variable
     let canClick = true;
-
-    const [playCorrectSound] = useSound(correctSound);
-    const [playWrongSound] = useSound(wrongSound);
-    const [playWinSound] = useSound(winSound);
-    const [playLoseSound] = useSound(loseSound);
  
     // useEffect(() => {
     //   if (currentQuestionIndex < questions.length) {
@@ -70,6 +60,15 @@ function Game() {
           canClick = true;
         }, 3000);
   };
+
+  const resetGame = () => {
+    setScore(0);
+    setCurrentQuestionIndex(0);
+    setSelectedAnswer(null);
+    setCorrectAnswer(null);
+    setButtonColor('primary');
+  };
+
   if (currentQuestionIndex < questions.length) {
       const currentQuestion = questions[currentQuestionIndex];
       return (
@@ -88,22 +87,30 @@ function Game() {
         if (score <= 5) {
           console.log({score});
           return (
-            <div className="score-container">
+            <div className="score-container animate__animated animate__rotateIn">
               <p>You scored {score}</p>
               {playLoseSound()}
+              {/* button to restart the game */}
+              <div>
+                <Button variant="primary" className="animate__animated animate__fadeIn animate__delay-3s" onClick={resetGame}>Play again</Button>
+              </div>
               <div style={{marginBottom: "47%"}}></div>
             </div>
           );
         } else {
           return (
-            <div className="score-container">
+            <div className="score-container animate__animated animate__zoomIn">
               <p>You scored {score}!</p>
               {playWinSound()}
+              {/* button to restart the game */}
+              <div>
+                <Button variant="primary" className="animate__animated animate__fadeIn animate__delay-3s" onClick={resetGame}>Play again</Button>
+              </div>
               <div style={{marginBottom: "47%"}}></div>
             </div>
           );
         }
   }
-};
+}
 
 export default Game;
