@@ -1,14 +1,21 @@
 import { useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { ADD_SCORE } from '../../utils/mutations';
 
-import './style.css'
+import './style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
+import correctSound from '../../assets/correct.mp3';
+import wrongSound from '../../assets/wrong.mp3';
+import winSound from '../../assets/win.mp3'
+import loseSound from '../../assets/lose.mp3';
+import useSound from 'use-sound';
 
 function Game() {
     const {state} = useLocation()
-    const {questions, category} = state;
+    const {questions} = state;
+    const category = questions[0].category;
     let [score, setScore] = useState(0);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     // const [timeLeft, setTimeLeft] = useState(15);
@@ -17,6 +24,11 @@ function Game() {
     const [buttonColor, setButtonColor] = useState('primary');
     // let timer; //needs to be a state variable
     let canClick = true;
+
+    const [playCorrectSound] = useSound(correctSound);
+    const [playWrongSound] = useSound(wrongSound);
+    const [playWinSound] = useSound(winSound);
+    const [playLoseSound] = useSound(loseSound);
  
     // useEffect(() => {
     //   if (currentQuestionIndex < questions.length) {
@@ -34,7 +46,7 @@ function Game() {
     //     return () => clearInterval(timer);
     //   }
     // }, [currentQuestionIndex, questions.length]);
-
+        //checks is user's answer is correct
     const handleAnswerOptionClick = (option, isCorrect) => {
       console.log(isCorrect);
       setSelectedAnswer(option);
@@ -61,6 +73,24 @@ function Game() {
         }, 3000);
   };
 
+        //save scores to user
+    const [addScore] = useMutation(ADD_SCORE);
+
+    const handleSaveScore = async () => {
+      try {
+        await addScore({
+          variables: {
+            category: category,
+            score: parseInt(score)
+          }
+        });
+        console.log('scores saved!');
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+      //reset game to play again
   const resetGame = () => {
     setScore(0);
     setCurrentQuestionIndex(0);
@@ -90,9 +120,9 @@ function Game() {
             <div className="score-container animate__animated animate__rotateIn">
               <p>You scored {score}</p>
               {playLoseSound()}
-              {/* button to restart the game */}
-              <div>
-                <Button variant="primary" className="animate__animated animate__fadeIn animate__delay-3s" onClick={resetGame}>Play again</Button>
+              <div className="animate__animated animate__fadeIn animate__delay-3s">
+                <Button variant="primary" onClick={handleSaveScore}>Save score</Button>
+                <Button variant="primary"  onClick={resetGame}>Play again</Button>
               </div>
               <div style={{marginBottom: "47%"}}></div>
             </div>
@@ -101,16 +131,16 @@ function Game() {
           return (
             <div className="score-container animate__animated animate__zoomIn">
               <p>You scored {score}!</p>
-              {playWinSound()}
-              {/* button to restart the game */}
-              <div>
-                <Button variant="primary" className="animate__animated animate__fadeIn animate__delay-3s" onClick={resetGame}>Play again</Button>
+              {playWinSound()}     
+              <div className="animate__animated animate__fadeIn animate__delay-3s">
+                <Button variant="primary" onClick={handleSaveScore}>Save score</Button>
+                <Button variant="primary" onClick={resetGame}>Play again</Button>
               </div>
               <div style={{marginBottom: "47%"}}></div>
             </div>
           );
         }
   }
-}
+};
 
 export default Game;
