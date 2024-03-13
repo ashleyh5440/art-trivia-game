@@ -47,12 +47,12 @@ export const DELETE_USER = gql`
 `;
 
 export const ADD_SCORE = gql`
-  mutation addScore($userId: ID, $category: String!, $score_value: Int!) {
-    addScore(userId: $userId, category: $category, score_value: $score_value) {
+  mutation addScore($userId: ID!, $category: String!, $score: Int!) {
+    addScore(userId: $userId, category: $category, score: $score) {
       _id
       username
       category
-      score_value
+      score
       createdAt
     }
   }

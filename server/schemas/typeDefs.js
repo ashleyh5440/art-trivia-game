@@ -8,7 +8,6 @@ const typeDefs = `
 
   type Score {
     _id: ID
-    user: User
     category: String
     score: Int
     createdAt: String
@@ -30,9 +29,9 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    updateUser(id: ID!, username: String, email: String, password: String): User
-    deleteUser(id: ID!): User
-    addScore(userId: ID!, category: String!, score_value: Int!): Score
+    updateUser(username: String, email: String, password: String): User
+    deleteUser: User
+    addScore(userId: ID!, category: String!, score: Int!) : Score
   }
 `;
 

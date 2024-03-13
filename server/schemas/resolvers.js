@@ -4,10 +4,14 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     getUser: async (_, { id }) => {
-      return await User.findById(id);
+      console.log(`Querying for user with ID: ${id}`);
+      const user = await User.findById(id).populate('scores');
+      console.log(`Found user: `, user);
+      return user;
     },
+
     getAllUsers: async () => {
-      return await User.find();
+      return await User.find().populate('scores');
     },
     // getTriviaQuestion: async (_, { id }) => {
     //   return await TriviaQuestion.findById(id);
@@ -15,10 +19,15 @@ const resolvers = {
     // getAllTriviaQuestions: async () => {
     //   return await TriviaQuestion.find();
     // },
+
      // Retrieve scores for a specific user
-    getUserScores: async (_, { userId }) => {
+    getUserScores: async (parent, args, context) => {
+      console.log(context);
       try {
-        const scores = await Score.find({ user: userId }).populate('user');
+        if (!context.user) {
+          throw new AuthenticationError('Not logged in');
+        }
+        const scores = await Score.find({ user: context.user._id }).populate('user');
         return scores;
       } catch (error) {
         console.error(error);
@@ -64,14 +73,34 @@ const resolvers = {
         // createUser: async (_, { username, email }) => {
     //   return await User.create({ username, email });
     // },
-    updateUser: async (_, { id, username, email, password }) => {
-      return await User.findByIdAndUpdate(id, { username, email, password }, { new: true });
+
+    updateUser: async (_, { username, email, password }, context) => {
+      return await User.findByIdAndUpdate(context.user._id, { username, email, password }, { new: true });
     },
-    deleteUser: async (_, { id }) => {
-      return await User.findByIdAndDelete(id);
+
+
+    deleteUser: async (_, {  }, context) => {
+      return await User.findByIdAndDelete(context.user._id);
     },
-    addScore: async (_, { userId, category, score_value }) => {
-      return await Score.create({ user: userId, category, score_value });
+
+
+    addScore: async (_, { userId, category, score }, context) => {
+   if (!context.user) {
+      throw new Error('You need to be logged in!');
+    }
+      const newScore = await Score.create({
+        user: context.user._id,
+        category,
+        score
+      });
+        
+      await User.findOneAndUpdate(
+        {_id: context.user._id }, 
+        { $push: { scores: newScore._id } },
+        { new: true }
+              // await Score.create({ user: context.user._id, category, score });
+      );
+      return newScore;
     },
     // addTriviaQuestion: async (_, { question, answer, options, imageURL }) => {
     //   return await TriviaQuestion.create({ question, answer, options, imageURL });
