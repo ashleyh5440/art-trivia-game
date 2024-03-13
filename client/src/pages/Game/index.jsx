@@ -5,11 +5,6 @@ import { useMutation } from '@apollo/client';
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
-import correctSound from '../../assets/correct.mp3';
-import wrongSound from '../../assets/wrong.mp3';
-import winSound from '../../assets/win.mp3';
-import loseSound from '../../assets/lose.mp3';
-import useSound from 'use-sound';
 
 function Game() {
     const {state} = useLocation()
@@ -22,11 +17,6 @@ function Game() {
     const [buttonColor, setButtonColor] = useState('primary');
     // let timer; //needs to be a state variable
     let canClick = true;
-
-    const [playCorrectSound] = useSound(correctSound);
-    const [playWrongSound] = useSound(wrongSound);
-    const [playWinSound] = useSound(winSound);
-    const [playLoseSound] = useSound(loseSound);
  
     // useEffect(() => {
     //   if (currentQuestionIndex < questions.length) {
@@ -70,6 +60,7 @@ function Game() {
           canClick = true;
         }, 3000);
   };
+
   if (currentQuestionIndex < questions.length) {
       const currentQuestion = questions[currentQuestionIndex];
       return (
@@ -104,6 +95,6 @@ function Game() {
           );
         }
   }
-};
+}
 
 export default Game;
