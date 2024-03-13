@@ -60,7 +60,7 @@ function SignUp() {
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextUser">
                         <Form.Label column sm="2">Username</Form.Label>
                         <Col sm="10">
-                            <Form.Control type="username" name= "username" placeholder="username" 
+                            <Form.Control type="username" name= "username" placeholder="name" 
                             value={formState.name} onChange={handleChange}/>  
                         </Col>   
                     </Form.Group>
@@ -68,7 +68,7 @@ function SignUp() {
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                         <Form.Label column sm="2">Email</Form.Label>
                         <Col sm="10">
-                            <Form.Control type="email" name = "email" placeholder="emailname@emailaddress.com" 
+                            <Form.Control type="email" name = "email" placeholder="name@email.com" 
                             value={formState.email} onChange={handleChange}/>
                         </Col>
                     </Form.Group>
@@ -77,7 +77,7 @@ function SignUp() {
                         <Form.Label column sm="2">Password</Form.Label>
                         <Col sm="10">
                             <Form.Control type="password" name="password" 
-                            placeholder="***************" value={formState.password} onChange={handleChange}/>
+                             value={formState.password} onChange={handleChange}/>
                         </Col>
                     </Form.Group>
 

@@ -10,10 +10,11 @@ function Categories() {
     const navigate = useNavigate()
     const [currentQuestions, setCurrentQuestions] = useState([]);
 
-    const handleCategorySelection = async (categoryId) => {
+    const handleCategorySelection = async (categoryId, category) => {
         try {
+          console.log(category)
             setSelectedCategory(categoryId);
-            const response = await axios.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}&encode=base64`);
+            const response = await axios.get(`https://opentdb.com/api.php?amount=3&category=${categoryId}&encode=base64`);
 
             const trimData = response.data.results.map((item) => {
                 // decode the question
@@ -54,9 +55,10 @@ function Categories() {
                 question: decodedB2BQ,
                 correctAnswer: decodedB2BATC,
                 options: shuffledOptions,
+                category: category,
               };
             });
-             navigate("/game", { state: {questions: trimData, category: selectedCategory} });
+             navigate("/game", { state: {questions: trimData} });
         } catch (error) {
             console.error('error getting questions', error);
         }

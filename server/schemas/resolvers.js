@@ -83,7 +83,6 @@ const resolvers = {
       return await User.findByIdAndDelete(context.user._id);
     },
 
-
     addScore: async (_, { userId, category, score }, context) => {
    if (!context.user) {
       throw new Error('You need to be logged in!');

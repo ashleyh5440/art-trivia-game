@@ -63,14 +63,14 @@ function LogIn(props) {
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                         <Form.Label column sm="2">Email</Form.Label>
                         <Col sm="10">
-                        <Form.Control name = "email" type="email" placeholder="emailname@emailaddress.com" value = {formState.email}
+                        <Form.Control name = "email" type="email" placeholder="name@email.com" value = {formState.email}
                         onChange={handleChange}/>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                         <Form.Label column sm="2">Password</Form.Label>
                         <Col sm="10">
-                            <Form.Control name = "password" type="password" placeholder="****************" value = {formState.password}
+                            <Form.Control name = "password" type="password" value = {formState.password}
                         onChange={handleChange}/>
                         </Col>
                     </Form.Group>
