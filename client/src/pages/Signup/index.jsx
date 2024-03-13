@@ -13,13 +13,13 @@ import{useMutation} from '@apollo/client';
 
 import { ADD_USER } from '../../utils/mutations';
 
-const Signup = () => {
+function SignUp() {
     const [formState, SetFormState] = useState({
-        username: '',
+        username:'',
         email: '',
-        password: '',
+        password: ''
     });
-    const [addUser, {error, data}] = useMutation(ADD_USER);
+    const [addUser, { error, data }] = useMutation(ADD_USER);
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -35,47 +35,61 @@ const Signup = () => {
         console.log(formState);
 
         try {
-            const {data} = await addUser({
+            const {data} = await addUser ({
                 variables: {...formState},
             });
+
             Auth.login(data.addUser.token);
-        } catch(error) {
-            console.error(e);
+        } catch(err) {
+            console.log(err);
         }
     };
-}
-
-function SignUp() {
     return (
         <Container className="container">
-            <div>
-                <h2>Sign up!</h2>
-            </div>
+        <div className="column">
+        <div>
+            <h2>Log in to play!</h2>
+        </div>
+        {data ? (
+              <p> Login Successful! You may now head {' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : ( <>
             <div className="column">
-                <Form>
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextUser">
+                <Form onSubmit = {handleFormSubmit}>
+                <Form.Group as={Row} className="mb-3" controlId="formPlaintextUser">
                         <Form.Label column sm="2">Username</Form.Label>
                         <Col sm="10">
-                            <Form.Control type="user" placeholder="name" />
-                        </Col>
+                            <Form.Control type="username" name= "username" placeholder="username" 
+                            value={formState.name} onChange={handleChange}/>  
+                        </Col>   
                     </Form.Group>
+
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                         <Form.Label column sm="2">Email</Form.Label>
                         <Col sm="10">
-                            <Form.Control type="email" placeholder="name@email.com" />
+                            <Form.Control type="email" name = "email" placeholder="emailname@emailaddress.com" 
+                            value={formState.email} onChange={handleChange}/>
                         </Col>
                     </Form.Group>
+
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                         <Form.Label column sm="2">Password</Form.Label>
                         <Col sm="10">
-                            <Form.Control type="password" placeholder="password" />
+                            <Form.Control type="password" name="password" 
+                            placeholder="***************" value={formState.password} onChange={handleChange}/>
                         </Col>
                     </Form.Group>
-                    <Button variant="primary" className="button"><NavLink to="/">Sign up</NavLink></Button>
+
+                    <Button variant="primary" className="button" type="submit">Sign Up</Button>
                 </Form>
-            </div>
-        </Container>
-    );
+                </div>
+            </>
+            )}
+
+        </div>
+    </Container>
+    );   
 };
 
 export default SignUp;
