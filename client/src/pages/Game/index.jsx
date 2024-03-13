@@ -61,6 +61,14 @@ function Game() {
         }, 3000);
   };
 
+  const resetGame = () => {
+    setScore(0);
+    setCurrentQuestionIndex(0);
+    setSelectedAnswer(null);
+    setCorrectAnswer(null);
+    setButtonColor('primary');
+  };
+
   if (currentQuestionIndex < questions.length) {
       const currentQuestion = questions[currentQuestionIndex];
       return (
@@ -79,17 +87,25 @@ function Game() {
         if (score <= 5) {
           console.log({score});
           return (
-            <div className="score-container">
+            <div className="score-container animate__animated animate__rotateIn">
               <p>You scored {score}</p>
               {playLoseSound()}
+              {/* button to restart the game */}
+              <div>
+                <Button variant="primary" className="animate__animated animate__fadeIn animate__delay-3s" onClick={resetGame}>Play again</Button>
+              </div>
               <div style={{marginBottom: "47%"}}></div>
             </div>
           );
         } else {
           return (
-            <div className="score-container">
+            <div className="score-container animate__animated animate__zoomIn">
               <p>You scored {score}!</p>
               {playWinSound()}
+              {/* button to restart the game */}
+              <div>
+                <Button variant="primary" className="animate__animated animate__fadeIn animate__delay-3s" onClick={resetGame}>Play again</Button>
+              </div>
               <div style={{marginBottom: "47%"}}></div>
             </div>
           );
