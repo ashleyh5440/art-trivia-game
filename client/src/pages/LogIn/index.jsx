@@ -74,7 +74,7 @@ function LogIn(props) {
                         onChange={handleChange}/>
                         </Col>
                     </Form.Group>
-                    <Button variant="primary" className="button"><NavLink to="/">Log in</NavLink></Button>
+                    <Button variant="primary" className="button" type="submit">Login</Button>
                 </Form>
                  </div> </>)}
             

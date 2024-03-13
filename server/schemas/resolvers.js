@@ -16,9 +16,9 @@ const resolvers = {
     //   return await TriviaQuestion.find();
     // },
      // Retrieve scores for a specific user
-    getUserScores: async (parent, args, context) => {
+    getUserScores: async (_, { userId }) => {
       try {
-        const scores = await Score.find({ user: context.user._id }).populate('user');
+        const scores = await Score.find({ user: userId }).populate('user');
         return scores;
       } catch (error) {
         console.error(error);
@@ -26,9 +26,9 @@ const resolvers = {
       }
     },
      // Retrieve scores for a specific category
-    getCategoryScores: async (_, { category }, context) => {
+    getCategoryScores: async (_, { category }) => {
       try {
-        const scores = await Score.find({ category, user: context.user._id }).populate('user');
+        const scores = await Score.find({ category }).populate('user');
         return scores;
       } catch (error) {
         console.error(error);
@@ -52,11 +52,11 @@ const resolvers = {
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError;
       }
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError;
       }
       const token = signToken(user);
       return { token, user };
@@ -64,14 +64,14 @@ const resolvers = {
         // createUser: async (_, { username, email }) => {
     //   return await User.create({ username, email });
     // },
-    updateUser: async (_, { username, email, password }, context) => {
-      return await User.findByIdAndUpdate(context.user._id, { username, email, password }, { new: true });
+    updateUser: async (_, { id, username, email, password }) => {
+      return await User.findByIdAndUpdate(id, { username, email, password }, { new: true });
     },
-    deleteUser: async (_, {  }, context) => {
-      return await User.findByIdAndDelete(context.user._id);
+    deleteUser: async (_, { id }) => {
+      return await User.findByIdAndDelete(id);
     },
-    addScore: async (_, { category, score_value }, context) => {
-      return await Score.create({ user: context.user._id, category, score_value });
+    addScore: async (_, { userId, category, score_value }) => {
+      return await Score.create({ user: userId, category, score_value });
     },
     // addTriviaQuestion: async (_, { question, answer, options, imageURL }) => {
     //   return await TriviaQuestion.create({ question, answer, options, imageURL });
