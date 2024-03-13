@@ -8,7 +8,6 @@ const typeDefs = `
 
   type Score {
     _id: ID
-    user: User
     category: String
     score: Int
     createdAt: String
@@ -32,7 +31,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     updateUser(username: String, email: String, password: String): User
     deleteUser: User
-    addScore(category: String!, score_value: Int!): Score
+    addScore(userId: ID!, category: String!, score: Int!) : Score
   }
 `;
 
