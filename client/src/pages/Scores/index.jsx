@@ -3,47 +3,46 @@ import { useQuery } from '@apollo/client';
 import {useSortBy, useTable} from 'react-table';
 import './style.css'
 
+// import { QUERY_SCORES } from '../../utils/queries';
 
 function Scores() {
+    // const {loading, data} = useQuery(QUERY_SCORES);
+    // console.log(data); 
     //instead of using this hardcoded data, have a function to retrieve data from database
-    const data = React.useMemo(
-        () => [ 
-            {
-                name: "Monkey D. Luffy",
-                score: 1
+    const myData = React.useMemo(
+     () => [ 
+           {
+                 score: 10,
+                category: "History",
+                   createdAt: "06/04/2000"
             },
             {
-                name: "Roronoa Zoro",
-                score: 3
-            },
-            {
-                name: "Nami",
-                score: 43
-            },
-            {
-                name: "Usopp",
-                score: 323
-            },
-            {
-                name: "Sanji",
-                score: 30
-            },
-
-            
-        ],
-        []
-    )
+                score: 20,
+               category: "History",
+                  createdAt: "06/04/2000"
+           },
+    ],
+    []
+)
 
     const columns = React.useMemo(
         () => [
             {
-                Header: "Name                ",
-                accessor: "name",
+                id: "score",
+                Header: "Score",
+                accessor: (row) => row.score,
             },
             {
-                Header: "Score",
-                accessor: "score",
+                id: "category",
+                Header: "Category",
+                accessor: (row) => row.category,
             },
+            {
+                id: "createdAt", 
+                Header: "Created At",
+                accessor: (row) => row.createdAt,
+                
+            }
         ],
         []
     )
@@ -55,8 +54,8 @@ function Scores() {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, data },
-    useSortBy)
+  } = useTable({ columns, myData}
+  )
 
     return (
        <div className="scores-container">
@@ -100,7 +99,7 @@ function Scores() {
                                             style={{
                                                 padding: '1px',
                                                 border: 'solid 1px green',
-                                                color: 'white'
+                                                color: 'blue'
                                             }}>
                                                 {cell.render('Cell')}
                                             </td>
