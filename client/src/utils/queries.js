@@ -16,7 +16,7 @@ export const QUERY_SCORES = gql`
       _id
       username
       category
-      score_value
+      score
       createdAt
     }
   }
@@ -28,7 +28,7 @@ export const QUERY_CATEGORY_SCORES = gql`
       _id
       username
       category
-      score_value
+      score
       createdAt
     }
   }
