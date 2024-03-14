@@ -7,6 +7,7 @@ import { QUERY_SCORES } from '../../utils/queries';
 
 function Scores() {
     const {loading, data} = useQuery(QUERY_SCORES);
+    
     // console.log(data); 
     //instead of using this hardcoded data, have a function to retrieve data from database
     const myData = React.useMemo(
