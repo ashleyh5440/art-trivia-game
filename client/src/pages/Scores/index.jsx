@@ -3,10 +3,11 @@ import { useQuery } from '@apollo/client';
 import {useSortBy, useTable} from 'react-table';
 import './style.css'
 
-// import { QUERY_SCORES } from '../../utils/queries';
+import { QUERY_SCORES } from '../../utils/queries';
 
 function Scores() {
-    // const {loading, data} = useQuery(QUERY_SCORES);
+    const {loading, data} = useQuery(QUERY_SCORES);
+    
     // console.log(data); 
     //instead of using this hardcoded data, have a function to retrieve data from database
     const myData = React.useMemo(
@@ -54,7 +55,7 @@ function Scores() {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, myData}
+  } = useTable({ columns, data: myData}, useSortBy
   )
 
     return (
