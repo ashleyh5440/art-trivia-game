@@ -25,9 +25,10 @@ const resolvers = {
       console.log(context);
       try {
         if (!context.user) {
-          throw new AuthenticationError('Not logged in');
+          throw AuthenticationError;
         }
-        const scores = await Score.find({ user: context.user._id }).populate('user');
+        const scores = await User.find({ user: context.user._id }).populate('score');
+        console.log(scores);
         return scores;
       } catch (error) {
         console.error(error);
@@ -61,11 +62,11 @@ const resolvers = {
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError;
+        throw AuthenticationError;
       }
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
-        throw new AuthenticationError;
+        throw AuthenticationError;
       }
       const token = signToken(user);
       return { token, user };
