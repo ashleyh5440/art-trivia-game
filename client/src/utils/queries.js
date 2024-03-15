@@ -11,10 +11,12 @@ query user($username: String!) {
 `;
 
 export const QUERY_SCORES = gql`
-  query getUserScores($userId: ID!) {
-    getUserScores(userId: $userId) {
+  query getUserScores {
+    getUserScores {
       _id
-      username
+      user {
+        username
+      }
       category
       score
       createdAt
@@ -26,7 +28,9 @@ export const QUERY_CATEGORY_SCORES = gql`
   query getCategoryScores($category: String!) {
     getCategoryScores(category: $category) {
       _id
-      username
+      user {
+        username
+      }
       category
       score
       createdAt
