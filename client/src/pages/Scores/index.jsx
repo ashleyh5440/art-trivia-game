@@ -14,6 +14,7 @@ function Scores() {
     });
 
 
+
 //    const myData = React.useMemo (
 //     () => [
 //         {
@@ -62,14 +63,14 @@ console.log(data);
     }, [data]);
 
  
- const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data: myData}, useSortBy
-  )
+//  const {
+//     getTableProps,
+//     getTableBodyProps,
+//     headerGroups,
+//     rows,
+//     prepareRow,
+//   } = useTable({ columns, data: myData}, useSortBy
+//   )
 
     const {
         getTableProps,
