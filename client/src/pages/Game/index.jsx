@@ -73,7 +73,7 @@ function Game() {
         }, 3000);
   };
 
-        //save scores to user
+        // save scores to user 
     const [addScore] = useMutation(ADD_SCORE);
 
     const handleSaveScore = async () => {

@@ -22,13 +22,13 @@ const resolvers = {
 
      // Retrieve scores for a specific user
     getUserScores: async (parent, args, context) => {
-      console.log(context);
+      console.log(`Querying scores for user ID: ${context.user._id}`);
       try {
         if (!context.user) {
           throw AuthenticationError;
         }
-        const scores = await User.find({ user: context.user._id }).populate('score');
-        console.log(scores);
+        const scores = await Score.find({ user: context.user._id }).populate('user');
+        console.log(`Scores found: ${JSON.stringify(scores)}`);
         return scores;
       } catch (error) {
         console.error(error);
@@ -84,7 +84,7 @@ const resolvers = {
       return await User.findByIdAndDelete(context.user._id);
     },
 
-    addScore: async (_, { userId, category, score }, context) => {
+    addScore: async (_, { category, score }, context) => {
    if (!context.user) {
       throw new Error('You need to be logged in!');
     }
