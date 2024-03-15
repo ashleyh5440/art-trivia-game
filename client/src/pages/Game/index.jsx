@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_SCORE } from '../../utils/mutations';
+import { QUERY_SCORES } from '../../utils/queries';
 
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -74,7 +75,15 @@ function Game() {
   };
 
         // save scores to user 
-    const [addScore] = useMutation(ADD_SCORE);
+    const [addScore] = useMutation(ADD_SCORE, {
+      refetchQueries: [
+        {
+          query: QUERY_SCORES,
+        },
+        'getUserScores'
+       
+      ]
+    });
 
     const handleSaveScore = async () => {
       try {
@@ -85,6 +94,7 @@ function Game() {
           }
         });
         console.log('scores saved!');
+        alert('Score saved!');
       } catch (error) {
         console.error(error);
       }
