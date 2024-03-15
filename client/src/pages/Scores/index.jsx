@@ -13,6 +13,7 @@ function Scores() {
         // variables: { userId },
     });
 
+
 //    const myData = React.useMemo (
 //     () => [
 //         {
@@ -45,6 +46,7 @@ console.log(data);
         []
     )
 
+
     const scoresData = React.useMemo(() => {
         if (!data) return [];
         console.log(data.getUserScores.map(({ score, category, createdAt }) => ({
@@ -59,6 +61,15 @@ console.log(data);
         }));
     }, [data]);
 
+ 
+//  const {
+//     getTableProps,
+//     getTableBodyProps,
+//     headerGroups,
+//     rows,
+//     prepareRow,
+//   } = useTable({ columns, data: myData}, useSortBy
+//   )
 
     const {
         getTableProps,

@@ -19,11 +19,11 @@ function Game() {
     const category = questions[0].category;
     let [score, setScore] = useState(0);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    // const [timeLeft, setTimeLeft] = useState(15);
+    const [timeLeft, setTimeLeft] = useState(15);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(null);
     const [buttonColor, setButtonColor] = useState('primary');
-    // let timer; //needs to be a state variable
+    const [timer, setTimer] = useState(0)
     let canClick = true;
 
     const [playCorrectSound] = useSound(correctSound);
@@ -31,23 +31,27 @@ function Game() {
     const [playWinSound] = useSound(winSound);
     const [playLoseSound] = useSound(loseSound);
  
-    // useEffect(() => {
-    //   if (currentQuestionIndex < questions.length) {
-    //     clearInterval(timer);
-    //     timer = setInterval(() => {
-    //       setTimeLeft(prevTime => {
-    //         if (prevTime === 0) {
-    //           setCurrentQuestionIndex(prevIndex => prevIndex + 1);
-    //           return 15; 
-    //         } else {
-    //           return prevTime - 1;
-    //         }
-    //       });
-    //     }, 1000);
-    //     return () => clearInterval(timer);
-    //   }
-    // }, [currentQuestionIndex, questions.length]);
-        //checks is user's answer is correct
+    useEffect(() => {
+      if (currentQuestionIndex < questions.length) {
+        clearInterval(timer);
+        let tempTimer = setInterval(() => {
+          setTimeLeft(prevTime => {
+            if (prevTime === 0) {
+              setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+              return 15; 
+            } else {
+              return prevTime - 1;
+            }
+          });
+        }, 1000);
+        setTimer(tempTimer)
+        return () => {
+          clearInterval(tempTimer)
+          clearInterval(timer)
+        }
+      }
+    }, [currentQuestionIndex, questions.length]);
+        // checks is user's answer is correct
     const handleAnswerOptionClick = (option, isCorrect) => {
       console.log(isCorrect);
       setSelectedAnswer(option);
@@ -62,13 +66,13 @@ function Game() {
         playWrongSound();
       }
       canClick = false;
-      // clearInterval(timer);
+      clearInterval(timer);
 
       setTimeout (() => {
           setCurrentQuestionIndex(prevIndex => prevIndex + 1);
           setSelectedAnswer(null);
           setCorrectAnswer(null);
-          // setTimeLeft(15);
+          setTimeLeft(15);
           setButtonColor('primary')
           canClick = true;
         }, 3000);
@@ -113,7 +117,7 @@ function Game() {
       const currentQuestion = questions[currentQuestionIndex];
       return (
           <div className="question-container">
-            {/* <p className="timer">{timeLeft}</p> */}
+            <p className="timer">{timeLeft}</p>
               <p className="question"><strong>{currentQuestion.question}</strong></p>
               <div className="options">
                   {currentQuestion.options.map((option, index) => (
