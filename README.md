@@ -18,30 +18,69 @@ Know It All is a Trivia Game that uses the Open Trivia Database that presents us
 - [Contributors](#contributors)
 
 ## Demonstration
-demo video
-link to demo video
+
+[Click Here to View Video Demonstration](https://screenpal.com/watch/cZnbbcVdM1i)
 
 ## Screenshots
-screenshots here
+
+![Landing Page](./client/public/media/Landing-Pg.png) 
+
+![Login Page](./client/public/media/Login-Pg.png)
+
+![Signup Page](./client/public/media/Signup-Pg.png)
+
+![Scores Page](./client/public/media/Scores-Pg.png)
+
+![Active Play](./client/public/media/Active-Play.png)
+
+
 
 ## Usage
+
+### Install
+
+- Clone or Fork the repository from Github to your local machine.
+- Open using a source code editor like VScode.
+- Open the integrated terminal in the root directory and type the command `npm install` to make the necessary dependency installations. 
+
+### Start the Server
+
+- In the terminal enter `npm run seed` to seed the database.
+- Next, in the terminal enter `npm run build` to prepare the application for deployment using `vite v4.5.2` build.
+- When prior steps are completed successfully, enter the command `npm run start` opening Graphql in browser. 
+- Open Graphql to use queries for existing data, or add new data via mutations within the database.
+- Enter in the terminal `npm run develop` to open the application in browser.
+- The application will be running at http://localhost:3001 
+
+### App Browser Navigation
+
 1. Once on the landing page, click the "Get started" button to be directed to the login/signup page.
 2. Complete one of either the login or signup form and submit. 
-3. User will be directed to the main page where they can begin searching restaurants via the search input in the top right corner of the map.
-4. The restaurant will be pinned on the map, at which point the user can save the restaurant to their account using the save button in the popup.
+3. User will be re-directed to the landing page where they can choose from 8 different categories.
+4. Upon choosing a category, the user starts the trivia game with questions that each have a 15 second countdown.
+5. When trivia game ends, the user is presented with their score and the two options to "save score" or "play again."
+6. The user can check their personal scores by choosing the "Scores" option in the navigation bar.
+7. On the Scores Page a table with the user's name, date created, and score are presented for viewing.
+8. The user can Log Out by clicking the "Log Out" option in the navigation bar and will be directed back to the landing page.
 
 ## Technologies
 
-[![CSS](https://img.shields.io/badge/CSS-blueviolet?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![React](https://img.shields.io/badge/React-16.14.0-blue)](https://reactjs.org/)
 
-[![JavaScript](https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![React Router](https://img.shields.io/badge/React_Router-6.22.1-blue)](https://reactrouter.com/)
 
-[![Express.js](https://img.shields.io/badge/Express.js-4.18.2-green?style=flat&logo=express&logoColor=white)](https://expressjs.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 
-[![bcrypt](https://img.shields.io/badge/bcrypt-5.1.1-blue?style=flat&logo=npm&logoColor=white)](https://www.npmjs.com/package/bcrypt)
+[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+
+[![GPT-3](https://img.shields.io/badge/GPT--3-4B0082?style=for-the-badge)](https://www.openai.com/)
+
+### Express [Version 4.18.2](https://expressjs.com/)
+
+### Mongoose [Version 8.1.2](https://www.npmjs.com/package/mongoose)
+
+
 
 ## Contributors
-
-
