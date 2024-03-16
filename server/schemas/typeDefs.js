@@ -8,6 +8,7 @@ const typeDefs = `
 
   type Score {
     _id: ID
+    user: User
     category: String
     score: Int
     createdAt: String
@@ -21,7 +22,7 @@ const typeDefs = `
   type Query {
     getUser(id: ID!): User
     getAllUsers: [User]
-    getUserScores(userId: ID!): [Score]
+    getUserScores: [Score]
     getCategoryScores(category: String!): [Score]
     me: User
   }

@@ -1,31 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
 import {useSortBy, useTable} from 'react-table';
 import './style.css'
 
 import { QUERY_SCORES } from '../../utils/queries';
 
-function Scores() {
-    const {loading, data} = useQuery(QUERY_SCORES);
-    
-    // console.log(data); 
-    //instead of using this hardcoded data, have a function to retrieve data from database
-    const myData = React.useMemo(
-     () => [ 
-           {
-                 score: 10,
-                category: "History",
-                   createdAt: "06/04/2000"
-            },
-            {
-                score: 20,
-               category: "History",
-                  createdAt: "06/04/2000"
-           },
-    ],
-    []
-)
+import Auth from '../../utils/auth';
 
+function Scores() {
+    // console.log("Querying scores for userId:", userId);
+    const profile = Auth.getProfile();
+     const { loading, error, data } = useQuery(QUERY_SCORES, {
+        // variables: { userId },
+    });
+ console.log(profile);
+ console.log(profile.data.username)
+
+
+
+//    const myData = React.useMemo (
+//     () => [
+//         {
+//             score: 10, 
+//             category: "History",
+//             createdAt: "06/04/2000"
+//         }
+//     ]
+//    )
+console.log(data);
     const columns = React.useMemo(
         () => [
             {
@@ -48,23 +50,63 @@ function Scores() {
         []
     )
 
-    
- const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data: myData}, useSortBy
-  )
 
+    const scoresData = React.useMemo(() => {
+        if (!data) return [];
+        console.log(data.getUserScores.map(({ score, category, createdAt }) => ({
+            score,
+            category,
+            createdAt, 
+        })));
+        return data.getUserScores.map(({ score, category, createdAt }) => ({
+            score,
+            category,
+            createdAt, 
+        }));
+    }, [data]);
+
+ 
+//  const {
+//     getTableProps,
+//     getTableBodyProps,
+//     headerGroups,
+//     rows,
+//     prepareRow,
+//   } = useTable({ columns, data: myData}, useSortBy
+//   )
+
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+      } = useTable({ columns, data: scoresData }, useSortBy);
+
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error: {error.message}</p>;
+  
+    
     return (
        <div className="scores-container">
+
+{/* <div>
+    <h2>User Scores</h2>
+    {data.getUserScores.map(({ _id, category, score, createdAt }) => (
+      <div key={_id}>
+        <p>Category: {category}</p>
+        <p>Score: {score}</p>
+        <p>Date: {createdAt}</p>
+      </div>
+    ))}
+  </div> */}
+
             <div>
-                <h1>High Scores</h1>
+                <h1> {profile.data.username ? `${profile.data.username}'s High Scores` : "High Scores"} </h1>
             </div>
             <div className="table">
                 <table {...getTableProps()}>
+
                     <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
