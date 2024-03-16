@@ -87,7 +87,7 @@ console.log(data);
     return (
        <div className="scores-container">
 
-<div>
+{/* <div>
     <h2>User Scores</h2>
     {data.getUserScores.map(({ _id, category, score, createdAt }) => (
       <div key={_id}>
@@ -96,7 +96,7 @@ console.log(data);
         <p>Date: {createdAt}</p>
       </div>
     ))}
-  </div>
+  </div> */}
 
             <div>
                 <h1>High Scores </h1>
