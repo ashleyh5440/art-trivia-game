@@ -14,7 +14,7 @@ function Categories() {
         try {
           console.log(category)
             setSelectedCategory(categoryId);
-            const response = await axios.get(`https://opentdb.com/api.php?amount=3&category=${categoryId}&encode=base64`);
+            const response = await axios.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}&encode=base64`);
 
             const trimData = response.data.results.map((item) => {
                 // decode the question
