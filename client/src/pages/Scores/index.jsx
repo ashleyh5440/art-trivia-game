@@ -10,6 +10,7 @@ function Scores() {
     
     // console.log(data); 
     //instead of using this hardcoded data, have a function to retrieve data from database
+
     const myData = React.useMemo(
      () => [ 
            {
@@ -20,6 +21,11 @@ function Scores() {
             {
                 score: 20,
                category: "History",
+                  createdAt: "06/04/2000"
+           },
+             {
+                score: 15,
+               category: "Art",
                   createdAt: "06/04/2000"
            },
     ],
@@ -64,7 +70,7 @@ function Scores() {
                 <h1>High Scores</h1>
             </div>
             <div className="table">
-                <table {...getTableProps()} style={{border: 'solid 1px yellow'}}>
+                <table {...getTableProps()} style={{border: 'solid 1px red'}}>
                     <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
@@ -72,7 +78,7 @@ function Scores() {
                                 <th 
                                     {...column.getHeaderProps(column.getSortByToggleProps())}
                                     style={{
-                                        borderBottom: 'solid 3px red',
+                                        borderBottom: 'solid 3px green',
                                         color: 'aquamarine'
                                     }}>
                                     {column.render('Header')}
