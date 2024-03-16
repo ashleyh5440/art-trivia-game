@@ -9,9 +9,12 @@ import Auth from '../../utils/auth';
 
 function Scores() {
     // console.log("Querying scores for userId:", userId);
+    const profile = Auth.getProfile();
      const { loading, error, data } = useQuery(QUERY_SCORES, {
         // variables: { userId },
     });
+ console.log(profile);
+ console.log(profile.data.username)
 
 
 
@@ -99,7 +102,7 @@ console.log(data);
   </div> */}
 
             <div>
-                <h1>High Scores </h1>
+                <h1> {profile.data.username ? `${profile.data.username}'s High Scores` : "High Scores"} </h1>
             </div>
             <div className="table">
                 <table {...getTableProps()} style={{border: 'solid 1px red'}}>
@@ -111,7 +114,7 @@ console.log(data);
                                     {...column.getHeaderProps(column.getSortByToggleProps())}
                                     style={{
                                         borderBottom: 'solid 3px green',
-                                        color: 'aquamarine'
+                                        color: 'black'
                                     }}>
                                     {column.render('Header')}
                                         <span>
