@@ -84,7 +84,7 @@ function Game() {
         {
           query: QUERY_SCORES,
         },
-        'getUserScores'
+  
        
       ]
     });
