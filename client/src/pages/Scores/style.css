@@ -1,6 +1,27 @@
+
+.scores-container, h1 {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    animation: glow 0.9s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow: 1 0 8px #fff, 0 0 20px #fff, 0 0 30px #ff26fe, 0 0 40px #ff26fe, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
+
+
+
+
 h1 {
     font-family: "Shadows Into Light", cursive;
-    font-size: 65px;
+    font-size: 70px;
     color: white;
 }
 
@@ -8,40 +29,123 @@ h1 {
     width: 70%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     margin-left: 20%;
-    margin-top: 8%;
+    margin-top: 10%;
 }
+.bDot {
+ 
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ff26fe;
+    border-radius: 25px;
+    background-color: #fff;
+    box-shadow: 5px 8px 45px 15px #ff26fe;  
+    position: relative;
+    animation-name: walk;
+    animation-duration: 4s;
+    animation-direction: alternate-reverse; 
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes walk {
+    0%   {background-color:#fff; right:0px; bottom:0px;}
+    25%  {background-color:#e60073; right:300px; bottom:0px;}
+    50%  {background-color:#04d9ff; right:300px; bottom:250px;}
+    75%  {background-color:#fff; right:300px; bottom:0px;}
+    100% {background-color:#ff26fe; right:0px; bottom:250px;} 
+  } 
+
+.pDot {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #ff26fe;
+  border-radius: 25px;
+  background-color: #fff;
+  box-shadow: 5px 8px 45px 15px #ff26fe;  
+  position: relative;
+  animation-name: run;
+  animation-duration: 4s;
+  animation-direction: alternate-reverse; 
+  animation-iteration-count: infinite;
+}
+
+@keyframes run {
+  0%   {background-color:#fff; left:0px; top:0px;}
+  25%  {background-color:#e60073; left:300px; top:0px;}
+  50%  {background-color:#04d9ff; left:300px; top:300px;}
+  75%  {background-color:#ff26fe; left:300px; top:0px;}
+  100% {background-color:#fff; left:0px; top:0px;} 
+}  
 
 .table {
-    width: 70%;
-    padding: 5%;
-    margin-bottom: 10%;
-    margin-left: 33%;
-    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    --bs-table-color: white;
+    padding-block: 0.5rem 0.5rem;
+    
 }
 
-#name-header {
+table thead {
+    color: #fff;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff26fe, 0 0 40px #ff26fe, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
+
+
+table {
+    margin-bottom: 8%;
+    width: 100%;
+    margin-top: 5%;
+    font-size: 18px;
+    --bs-table-bg: transparent;  
+    border-color: #04d9ff;
+    box-shadow: 5px 5px 45px 15px #04d9ff;
+
+    border-radius: 14px;
+}
+
+table thead {
+    border-color: inherit;
+}
+
+td {
+    font-size: 24px;
+    text-shadow: 2px 2px 4px #04d9ff;
+}
+
+/* #name-header {
     font-family: Arial, serif;
     font-size: medium;
     color: #FB4241;
-}
+} */
 
-#score-header {
+/* #score-header {
     font-family: Arial, serif;
     font-size: medium;
-    color: #FB4241;
-}
+    color: #ff26fe;
+} */
 
-#name {
+/* #name {
     font-family: Arial, serif;
     font-size: medium;
-    color: #00AB4E;
-}
+    color: #39ff14;
+} */
 
-#score {
+/* #score {
     font-family: Arial, serif;
     font-size: medium;
-    color: #00AB4E;
-}
+    color: #04d9ff;
+} */
 

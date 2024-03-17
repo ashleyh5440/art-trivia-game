@@ -89,6 +89,10 @@ console.log(data);
     
     return (
        <div className="scores-container">
+        <div className="pDot"></div>
+        <div className="pDot"></div>
+        <div className="bDot"></div>
+        <div className="bDot"></div>
 
 {/* <div>
     <h2>User Scores</h2>
@@ -100,7 +104,6 @@ console.log(data);
       </div>
     ))}
   </div> */}
-
             <div>
                 <h1> {profile.data.username ? `${profile.data.username}'s High Scores` : "High Scores"} </h1>
             </div>
