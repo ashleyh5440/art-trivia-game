@@ -28,7 +28,8 @@
 
 h1 {
   margin-bottom: 8%;
-  animation: mymove 5s;
+  animation: mymove 3s;
+  animation-delay: -0.6s;
 }
 
 @keyframes mymove {
@@ -36,7 +37,7 @@ h1 {
 }
 
 
-.bDot {
+.bDot1 {
  
     width: 30px;
     height: 30px;
@@ -47,6 +48,31 @@ h1 {
     position: relative;
     animation-name: walk;
     animation-duration: 4s;
+    animation-delay: -0.9s;
+    animation-direction: alternate-reverse; 
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes walk {
+    0%   {background-color:#fff; right:0px; bottom:0px;}
+    25%  {background-color:#e60073; right:300px; bottom:0px;}
+    50%  {background-color:#04d9ff; right:150px; bottom:300px;}
+    75%  {background-color:#fff; right:300px; bottom:0px;}
+    100% {background-color:#ff26fe; right:0px; bottom:150px;} 
+  } 
+
+  .bDot {
+ 
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ff26fe;
+    border-radius: 25px;
+    background-color: #fff;
+    box-shadow: 5px 8px 45px 15px #ff26fe;  
+    position: relative;
+    animation-name: walk;
+    animation-duration: 4s;
+    animation-delay: -1s;
     animation-direction: alternate-reverse; 
     animation-iteration-count: infinite;
   }
@@ -59,6 +85,30 @@ h1 {
     100% {background-color:#ff26fe; right:0px; bottom:150px;} 
   } 
 
+  .pDot1 {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ff26fe;
+    border-radius: 25px;
+    background-color: #fff;
+    box-shadow: 5px 8px 45px 15px #ff26fe;  
+    position: relative;
+    animation-name: run;
+    animation-duration: 4s;
+    animation-delay: -1s;
+    animation-direction: alternate-reverse; 
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes run {
+    0%   {background-color:#fff; left:0px; top:0px;}
+    25%  {background-color:#e60073; left:300px; top:0px;}
+    50%  {background-color:#04d9ff; left:200px; top:400px;}
+    75%  {background-color:#ff26fe; left:300px; top:0px;}
+    100% {background-color:#fff; left:0px; top:0px;} 
+  } 
+
+
 .pDot {
   width: 30px;
   height: 30px;
@@ -69,6 +119,7 @@ h1 {
   position: relative;
   animation-name: run;
   animation-duration: 4s;
+  animation-delay: -0.9s;
   animation-direction: alternate-reverse; 
   animation-iteration-count: infinite;
 }

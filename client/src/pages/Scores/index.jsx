@@ -104,9 +104,9 @@ function Scores() {
 
     return (
        <div className="scores-container">
+        <div className="pDot1"></div>
         <div className="pDot"></div>
-        <div className="pDot"></div>
-        <div className="bDot"></div>
+        <div className="bDot1"></div>
         <div className="bDot"></div>
 
             {/* <div>
