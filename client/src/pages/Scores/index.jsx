@@ -123,17 +123,13 @@ function Scores() {
                 <h1> {username ? `${username}'s High Scores` : "High Scores"} </h1>
             </div>
             <div className="table">
-                <table {...getTableProps()} style={{ border: 'solid 1px red' }}>
+                <table {...getTableProps()}>
                     <thead>
                         {headerGroups.map(headerGroup => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
                                 {headerGroup.headers.map(column => (
                                     <th
-                                        {...column.getHeaderProps(column.getSortByToggleProps())}
-                                        style={{
-                                            borderBottom: 'solid 3px green',
-                                            color: 'black'
-                                        }}>
+                                        {...column.getHeaderProps(column.getSortByToggleProps())}>
                                         {column.render('Header')}
                                         <span>
                                             {column.isSorted
@@ -155,12 +151,7 @@ function Scores() {
                                     {row.cells.map(cell => {
                                         return (
                                             <td
-                                                {...cell.getCellProps()}
-                                                style={{
-                                                    padding: '1px',
-                                                    border: 'solid 1px green',
-                                                    color: 'blue'
-                                                }}>
+                                                {...cell.getCellProps()}>
                                                 {cell.render('Cell')}
                                             </td>
                                         )
