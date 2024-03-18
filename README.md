@@ -29,7 +29,7 @@ Know It All is a Trivia Game that uses the Open Trivia Database that presents us
 
 ![Signup Page](./client/public/media/Signup-Pg.png)
 
-![Scores Page](./client/public/media/Scores-Pg.png)
+![Scores Page](./client/public/media/Scores-page.png)
 
 ![Active Play](./client/public/media/Active-Play.png)
 
