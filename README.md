@@ -19,7 +19,7 @@ Know It All is a Trivia Game that uses the Open Trivia Database that presents us
 
 ## Demonstration
 
-[Click Here to View Video Demonstration](https://screenpal.com/watch/cZnbbcVdM1i)
+[Click Here to View Video Demonstration](./client/src/assets/Art-Trivia-Demo.mp4)
 
 ## Screenshots
 
@@ -84,3 +84,8 @@ Know It All is a Trivia Game that uses the Open Trivia Database that presents us
 
 
 ## Contributors
+- **[Ashley Hill](https://github.com/ashleyh5440)** - Front end/Back end Development
+- **[Angel Gonzalez](https://github.com/Utero93)** - Front end Development
+- **[Courtney Kalbach](https://github.com/KNC2007)** - Front end/Back end Development
+- **[Mari Bah](https://github.com/Mariatu)** - Back end Development
+- **[Alex E](https://github.com/upennbootcamp23)** - Front end/Back end Development
