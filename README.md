@@ -16,6 +16,8 @@ Know It All is a Trivia Game that uses the Open Trivia Database that presents us
 - [Usage](#usage)
 - [Technologies](#technologies)
 - [Contributors](#contributors)
+- [Credits](#credits)
+- [Deployments](#deployments)
 
 ## Demonstration
 
@@ -89,3 +91,11 @@ Know It All is a Trivia Game that uses the Open Trivia Database that presents us
 - **[Courtney Kalbach](https://github.com/KNC2007)** - Front end/Back end Development
 - **[Mari Bah](https://github.com/Mariatu)** - Back end Development
 - **[Alex E](https://github.com/upennbootcamp23)** - Front end/Back end Development
+
+## Credits
+The crew would like to give special thanks to:
+- Professor Anthony Maddatu, Teaching Assistants Tom Woods and Andrew Read for their help in fixing up bits and pieces of the project
+- The PBS KIDS Style Guide, which was used to do the CSS coloring (albeit temporarily): https://pbs-kids-brand.pbskids.org/downloads/pbs-kids-style-guide.pdf
+
+## Deployments
+The link to the deployed project is https://art-trivia-game.onrender.com/.
