@@ -45,6 +45,21 @@
     margin-left: 10%;
     opacity: 1;
     font-size: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-img {
+    width: 35%;
+}
+
+.score-img img {
+    width: 100%;
+}
+
+.save-score-btn {
+  margin-right: 4%;
 }
 
 @media screen and (max-width: 768px) {

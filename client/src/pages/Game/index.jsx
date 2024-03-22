@@ -7,6 +7,8 @@ import { QUERY_SCORES } from '../../utils/queries';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
+import winImg from '../../assets/win.gif';
+import loseImg from '../../assets/lose.gif'
 import correctSound from '../../assets/correct.mp3';
 import wrongSound from '../../assets/wrong.mp3';
 import winSound from '../../assets/win.mp3'
@@ -139,8 +141,11 @@ function Game() {
             return (
                 <div className="score-container animate__animated animate__rotateIn">
                     <p>You scored {score}</p>
+                    <div className="score-img">
+                      <img src={loseImg} />
+                    </div>
                     <div className="animate__animated animate__fadeIn animate__delay-3s">
-                        <Button variant="primary" onClick={handleSaveScore}>Save score</Button>
+                        <Button className="save-score-btn" variant="primary" onClick={handleSaveScore}>Save score</Button>
                         <Button variant="primary" onClick={resetGame}>Play again</Button>
                     </div>
                     <div style={{ marginBottom: "47%" }}></div>
@@ -155,8 +160,11 @@ function Game() {
             return (
                 <div className="score-container animate__animated animate__zoomIn">
                     <p>You scored {score}!</p>
+                    <div className="score-img">
+                      <img src={loseImg} />
+                    </div>
                     <div className="animate__animated animate__fadeIn animate__delay-3s">
-                        <Button variant="primary" onClick={handleSaveScore}>Save score</Button>
+                        <Button className="save-score-btn" variant="primary" onClick={handleSaveScore}>Save score</Button>
                         <Button variant="primary" onClick={resetGame}>Play again</Button>
                     </div>
                     <div style={{ marginBottom: "47%" }}></div>
@@ -167,3 +175,4 @@ function Game() {
 }
 
 export default Game;
+

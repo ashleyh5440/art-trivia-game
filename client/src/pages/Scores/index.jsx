@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useSortBy, useTable } from 'react-table';
 import { useNavigate } from 'react-router-dom';
 import './style.css'
+import Button from 'react-bootstrap/Button';
 
 import { QUERY_SCORES } from '../../utils/queries';
 
@@ -49,7 +50,6 @@ function Scores() {
         ],
         []
     )
-
 
     const scoresData = React.useMemo(() => {
         if (!data) return [];
@@ -126,6 +126,7 @@ function Scores() {
                         })}
                     </tbody>
                 </table>
+                <Button className="save-score-btn" variant="primary">Save score</Button>
             </div>
         </div>
     );
