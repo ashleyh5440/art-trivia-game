@@ -19,8 +19,6 @@ function Scores() {
         } else {
             const profile = Auth.getProfile();
             setUsername(profile.data.username);
-
-        // console.log("Querying scores for userId:", userId);
         }
 
 
@@ -28,39 +26,26 @@ function Scores() {
 
     const { loading, error, data } = useQuery(QUERY_SCORES, {
         skip: !Auth.loggedIn(),
-        // variables: { userId },
     });
-
-    //    const myData = React.useMemo (
-    //     () => [
-    //         {
-    //             score: 10, 
-    //             category: "History",
-    //             createdAt: "06/04/2000"
-    //         }
-    //     ]
-    //    )
-    console.log(data);
-
 
     const columns = React.useMemo(
         () => [
-            {
-                id: "score",
-                Header: "Score",
-                accessor: (row) => row.score,
-            },
             {
                 id: "category",
                 Header: "Category",
                 accessor: (row) => row.category,
             },
             {
-                id: "createdAt",
-                Header: "Created At",
-                accessor: (row) => row.createdAt,
+                id: "score",
+                Header: "Score",
+                accessor: (row) => row.score,
+            },
+            // {
+            //     id: "createdAt",
+            //     Header: "Created At",
+            //     accessor: (row) => row.createdAt,
 
-            }
+            // }
         ],
         []
     )
@@ -79,16 +64,6 @@ function Scores() {
             createdAt,
         }));
     }, [data]);
-
-
-    //  const {
-    //     getTableProps,
-    //     getTableBodyProps,
-    //     headerGroups,
-    //     rows,
-    //     prepareRow,
-    //   } = useTable({ columns, data: myData}, useSortBy
-    //   )
 
     const {
         getTableProps,
@@ -109,16 +84,6 @@ function Scores() {
         <div className="bDot1"></div>
         <div className="bDot"></div>
 
-            {/* <div>
-    <h2>User Scores</h2>
-    {data.getUserScores.map(({ _id, category, score, createdAt }) => (
-      <div key={_id}>
-        <p>Category: {category}</p>
-        <p>Score: {score}</p>
-        <p>Date: {createdAt}</p>
-      </div>
-    ))}
-  </div> */}
             <div>
                 <h1> {username ? `${username}'s High Scores` : "High Scores"} </h1>
             </div>
