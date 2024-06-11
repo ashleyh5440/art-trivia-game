@@ -1,0 +1,38 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding-top: 10%;
+}
+
+h1 {
+    font-family: "Shadows Into Light", cursive;
+    font-size: 65px;
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+.categories {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#home-pic {
+    width: 30%;
+}
+
+@media screen and (max-width: 430px) {
+    h1 {
+        font-size: 55px;
+        margin-top: 17%;
+    }
+    #home-pic {
+        width: 20%;
+   }
+}

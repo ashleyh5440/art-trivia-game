@@ -1,0 +1,51 @@
+.category-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.row {
+    width: 35%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-buttons Button {
+    border: none;
+    margin: 2%;
+    padding: 2%;
+    background-color: rgb(249, 11, 178);
+    font-size: 140%;
+    font-family: "Shadows Into Light", cursive;
+    color: white;
+}
+
+.category-buttons Button:hover {
+    background-color: rgb(187, 4, 132);
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        width: 80%;
+    }
+
+    .category-buttons Button {
+        margin: 4%;
+        width: 90%;
+    }
+
+    .left, .right {
+        margin: 0%;
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .category-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}

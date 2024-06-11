@@ -1,0 +1,21 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body {
+  background-image: url(./assets/home-background.jpg);
+  background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-position: center;
+}
+
+/* @media screen and (max-width: 768px) {
+  body {
+    background-size: 100vw 1600px;
+  }
+} */
+
+
+
